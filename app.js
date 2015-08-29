@@ -50,6 +50,13 @@ function initDBConnection() {
 			dbCredentials.user = vcapServices.cloudantNoSQLDB[0].credentials.username;
 			dbCredentials.password = vcapServices.cloudantNoSQLDB[0].credentials.password;
 			dbCredentials.url = vcapServices.cloudantNoSQLDB[0].credentials.url;
+			cloudant = require('cloudant')(dbCredentials.url);
+	
+			// check if DB exists if not create
+			cloudant.db.create(dbCredentials.dbName, function (err, res) {
+				if (err) { console.log('could not create db ', err); }
+		    });
+			db = cloudant.use(dbCredentials.dbName);
 		} else {
 			console.log('Could not find Cloudant credentials in VCAP_SERVICES environment variable');
 		}
@@ -67,13 +74,7 @@ function initDBConnection() {
 		//dbCredentials.url = "REPLACE ME";
 	}
 
-	cloudant = require('cloudant')(dbCredentials.url);
 	
-	// check if DB exists if not create
-	cloudant.db.create(dbCredentials.dbName, function (err, res) {
-		if (err) { console.log('could not create db ', err); }
-    });
-	db = cloudant.use(dbCredentials.dbName);
 }
 
 initDBConnection();
