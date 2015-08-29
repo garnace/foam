@@ -299,13 +299,33 @@ $(document).ready(function(){
 <!-- #content div -->
     
       <div class='col-sm-3 sidebar-offcanvas' id="sidebar" role="navigation">
-        <h2>Sidebar</h2>
+        <h2>I feel...</h2>
+	<ul class="nav nav-tabs nav-stacked"> 
+	  <li></li>
+
+          <li><a href='#pageBar' onclick="getSectionLO(0);">Adventurous</a></li>
+          <li><a href='#pageBar' onclick="getSectionBlog(0);">Lazy </a></li>
+          <li><a href='#' onclick="getSectionInsertDB(0);">Stressed</a></li>
+	</ul>
+
+
+        <h2>I have...</h2>
+	<ul class="nav nav-tabs nav-stacked"> 
+	  <li></li>
+
+
+          <li><a href='#pageBar' onclick="getSectionLO(0);">Adventurous</a></li>
+          <li><a href='#pageBar' onclick="getSectionBlog(0);">Lazy </a></li>
+          <li><a href='#' onclick="getSectionInsertDB(0);">Stressed</a></li>
+
+	</ul>
+
         <ul class="nav nav-tabs nav-stacked">
           <li><a href='#' onclick="load(0);">Home</a></li>
-          <li><a href='#pageBar' onclick="getSFeedTerm('nebula');">Look at restaurant</a></li>
-          <li><a href='#' onclick="getSectionO(0);">News</a></li>
+          <li><a href='#pageBar' onclick="getSFeedTerm('nebula');">I feel...</a></li>
+          <li><a href='#' onclick="getSectionO(0);">I have...</a></li>
 
-          <li><a href='#pageBar' onclick="getSectionLO(0);">Search l</a></li>
+          <li><a href='#pageBar' onclick="getSectionLO(0);">I am a cook</a></li>
           <li><a href='#pageBar' onclick="getSectionBlog(0);">Search </a></li>
           <li><a href='#' onclick="getSectionInsertDB(0);">Insert DB</a></li>
           <li><a href='#' onclick="getSectionDBB(0);">Search DB</a></li>
