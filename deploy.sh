@@ -33,9 +33,6 @@ NEW_APP_NAME="${CF_APP}-$SELECTED_BUILD-$(date +%s)"
 DOMAIN=mybluemix.net 
 # Used to define a temporary route to test the newly deployed app
 TEST_HOST=$NEW_APP_NAME
-# Java artifact being deployed. Needs to match output from 
-# the build process.
-NODE_APP=moodyfoodie
 MEMORY=256M
 
 echo `cat /etc/*-release`
@@ -48,7 +45,6 @@ echo "PUBLIC_HOST=$PUBLIC_HOST"
 echo "DOMAIN=$DOMAIN"
 echo "NEW_APP_NAME=$NEW_APP_NAME"
 echo "TEST_HOST=$TEST_HOST"
-echo "NODE_APP=$NODE_APP"
 echo "MEMORY"=$MEMORY
 
 #############
@@ -75,7 +71,7 @@ rm -f apps.txt
 # application.
 #############
 echo -e "${label_color}Pushing new deployment - ${green}$NEW_APP_NAME${no_color}"
-cf push $NEW_APP_NAME -p $NODE_APP -d $DOMAIN -n $TEST_HOST -m $MEMORY
+cf push $NEW_APP_NAME -d $DOMAIN -n $TEST_HOST -m $MEMORY
 DEPLOY_RESULT=$?
 if [ $DEPLOY_RESULT -ne 0 ]; then
 echo -e "${red}Deployment of $NEW_APP_NAME failed!!"
