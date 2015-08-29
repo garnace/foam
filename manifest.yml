@@ -1,6 +1,5 @@
 applications:
-- services:
-  disk_quota: 1024M
+- disk_quota: 1024M
   host: foodmood
   name: foodmood
   command: node app.js
