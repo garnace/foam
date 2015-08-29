@@ -1,4 +1,7 @@
+The app is currently deployed to https://moodyfoodie.mybluemix.net
+
 # foodmood
+
 
 
 # cloudant_boilerplate_nodejs

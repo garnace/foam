@@ -295,89 +295,90 @@ app.put('/api/favorites', function(request, response) {
 app.get('/api/favorites', function(request, response) {
 
 	console.log("Get method invoked.. ")
-	
-	db = cloudant.use(dbCredentials.dbName);
-	var docList = [];
-	var i = 0;
-	db.list(function(err, body) {
-		if (!err) {
-			var len = body.rows.length;
-			console.log('total # of docs -> '+len);
-			if(len == 0) {
-				// push sample data
-				// save doc
-				var docName = 'sample_doc';
-				var docDesc = 'A sample Document';
-				db.insert({
-					name : docName,
-					value : 'A sample Document'
-				}, '', function(err, doc) {
-					if(err) {
-						console.log(err);
-					} else {
-						
-						console.log('Document : '+JSON.stringify(doc));
-						var responseData = createResponseData(
-							doc.id,
-							docName,
-							docDesc,
-							[]);
-						docList.push(responseData);
-						response.write(JSON.stringify(docList));
-						console.log(JSON.stringify(docList));
-						console.log('ending response...');
-						response.end();
-					}
-				});
-			} else {
-
-				body.rows.forEach(function(document) {
-					
-					db.get(document.id, { revs_info: true }, function(err, doc) {
-						if (!err) {
-							if(doc['_attachments']) {
-							
-								var attachments = [];
-								for(var attribute in doc['_attachments']){
-								
-									if(doc['_attachments'][attribute] && doc['_attachments'][attribute]['content_type']) {
-										attachments.push({"key": attribute, "type": doc['_attachments'][attribute]['content_type']});
-									}
-									console.log(attribute+": "+JSON.stringify(doc['_attachments'][attribute]));
-								}
-								var responseData = createResponseData(
-										doc._id,
-										doc.name,
-										doc.value,
-										attachments);
-							
-							} else {
-								var responseData = createResponseData(
-										doc._id,
-										doc.name,
-										doc.value,
-										[]);
-							}	
-						
-							docList.push(responseData);
-							i++;
-							if(i >= len) {
-								response.write(JSON.stringify(docList));
-								console.log('ending response...');
-								response.end();
-							}
-						} else {
+	if (cloudant) {
+		db = cloudant.use(dbCredentials.dbName);
+		var docList = [];
+		var i = 0;
+		db.list(function(err, body) {
+			if (!err) {
+				var len = body.rows.length;
+				console.log('total # of docs -> '+len);
+				if(len == 0) {
+					// push sample data
+					// save doc
+					var docName = 'sample_doc';
+					var docDesc = 'A sample Document';
+					db.insert({
+						name : docName,
+						value : 'A sample Document'
+					}, '', function(err, doc) {
+						if(err) {
 							console.log(err);
+						} else {
+							
+							console.log('Document : '+JSON.stringify(doc));
+							var responseData = createResponseData(
+								doc.id,
+								docName,
+								docDesc,
+								[]);
+							docList.push(responseData);
+							response.write(JSON.stringify(docList));
+							console.log(JSON.stringify(docList));
+							console.log('ending response...');
+							response.end();
 						}
 					});
-					
-				});
+				} else {
+
+					body.rows.forEach(function(document) {
+						
+						db.get(document.id, { revs_info: true }, function(err, doc) {
+							if (!err) {
+								if(doc['_attachments']) {
+								
+									var attachments = [];
+									for(var attribute in doc['_attachments']){
+									
+										if(doc['_attachments'][attribute] && doc['_attachments'][attribute]['content_type']) {
+											attachments.push({"key": attribute, "type": doc['_attachments'][attribute]['content_type']});
+										}
+										console.log(attribute+": "+JSON.stringify(doc['_attachments'][attribute]));
+									}
+									var responseData = createResponseData(
+											doc._id,
+											doc.name,
+											doc.value,
+											attachments);
+								
+								} else {
+									var responseData = createResponseData(
+											doc._id,
+											doc.name,
+											doc.value,
+											[]);
+								}	
+							
+								docList.push(responseData);
+								i++;
+								if(i >= len) {
+									response.write(JSON.stringify(docList));
+									console.log('ending response...');
+									response.end();
+								}
+							} else {
+								console.log(err);
+							}
+						});
+						
+					});
+				}
+				
+			} else {
+				console.log(err);
 			}
-			
-		} else {
-			console.log(err);
-		}
-	});
+		});
+	}
 
 });
 
