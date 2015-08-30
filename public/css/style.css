@@ -892,7 +892,8 @@ span.price-tag{
 #head 
 {
 //    height:100px;
-    background-image:url('../images/gsgadu.png');
+  //  background-image:url('../images/gsgadu.png');
+    background:#535353;
     background-repeat:repeat-x;
 //    font:Geneva, Helvetica,sans-serif,bold;
 //    font-face:Garamond,sans-serif,bold;

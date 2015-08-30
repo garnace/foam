@@ -1,0 +1,5 @@
+Back Ground colour code:afafaf
+Header colour: 535353
+Side bar backgroud:b0ada5
+
+
