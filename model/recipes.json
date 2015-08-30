@@ -46,6 +46,15 @@
 			"ingredients": ["4 boneless skinless chicken breast halves", "3 tbsp cornstarch", "2 tbsp soy sauce", "1/2 tsp ground giner", "1/4 garlic powder", "3 tbsp cooking oil, divided", "2 cups broccoli florets", "1 cup sliced celery", "1 cup thinly sliced carrot", "1 small onion cut into wedges", "1 cup water1 tsp chicken bouillon granule"],
 			"steps": ["Cut chicken into 1/2 inch strips and place in resealable plastic bag", "Add cornstarch and toss to coat", "Combine soy sauce, ginger, and garlic powder and add to bag. Shake well.", "Refrigerate for 30 minutes.", "Heat 2 tnsp oil in a large skillet or wok. Stirfry chicken until no longer pink (3-5 minutes). Remove and keep warm.", "Add remaining oil stir fry broccoli, celery, carrots and onion fr 4-5 minutes or until crisp/tender.", "Add water and bouillon and return chicken to pan. Cook and stir until thickened and bubbly. Serve"],
 			"imageUrl": "https://farm3.staticflickr.com/2859/9178082694_1b9ea5c462_b.jpg"
+		},
+		{
+			"name": "Chicken Salad", 
+			"moods": ["lazy"],
+			"time": 2, 
+			"expertise": 1,
+			"ingredients": ["4 boneless skinless chicken breast halves", "3 tbsp cornstarch", "2 tbsp soy sauce", "1/2 tsp ground giner", "1/4 garlic powder", "3 tbsp cooking oil, divided", "2 cups broccoli florets", "1 cup sliced celery", "1 cup thinly sliced carrot", "1 small onion cut into wedges", "1 cup water1 tsp chicken bouillon granule"],
+			"steps": ["Cut chicken into 1/2 inch strips and place in resealable plastic bag", "Add cornstarch and toss to coat", "Combine soy sauce, ginger, and garlic powder and add to bag. Shake well.", "Refrigerate for 30 minutes.", "Heat 2 tnsp oil in a large skillet or wok. Stirfry chicken until no longer pink (3-5 minutes). Remove and keep warm.", "Add remaining oil stir fry broccoli, celery, carrots and onion fr 4-5 minutes or until crisp/tender.", "Add water and bouillon and return chicken to pan. Cook and stir until thickened and bubbly. Serve"],
+			"imageUrl": "http://cdn-image.myrecipes.com/sites/default/files/styles/420x420/public/image/recipes/sl/03142008/chicken-salad-sl-521176-x.jpg"
 		}
 	]
 	

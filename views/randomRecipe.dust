@@ -3,7 +3,16 @@
 <head>	
   <title>{recipe.name}</title>
   <link rel="stylesheet" type="text/css" href="/css/randomRecipe.css">
-
+<script>
+	function reload() {
+		location.reload() 	;
+	}
+</script>
+<script>
+	function loadChickenSalad() {
+		location.href = "images/recipe_page_mockup3.png";
+	}
+</script>
 </head>
 <body style="background: url({backgroundImage}) center center no-repeat">
 	<div class="recipeInfo">
@@ -12,6 +21,8 @@
 
 		</img>
 		<h3>{recipe.name}<h3>
+		<img src="images/btn_yes_off.png" onclick="loadChickenSalad()"/>
+		<img src="images/cutcaster-photo-100322602-Hell-No-Red-Button.jpg" onclick="reload()"/>
 	</div>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="../scripts/randomRecipe.js"></script>
