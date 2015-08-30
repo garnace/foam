@@ -44,16 +44,16 @@ function initDBConnection() {
 	// if(process.env.VCAP_SERVICES) {
 		// var vcapServices = JSON.parse(process.env.VCAP_SERVICES);
 		// if(vcapServices.cloudantNoSQLDB) {
-			dbCredentials.host = 'moodyfoodie.cloudant.com';
-			dbCredentials.port = 443;
-			dbCredentials.user = 'moodyfoodie';
-			dbCredentials.password = 'moodyfoodie123';
+			// dbCredentials.host = 'moodyfoodie.cloudant.com';
+			// dbCredentials.port = 443;
+			// dbCredentials.user = 'moodyfoodie';
+			// dbCredentials.password = 'moodyfoodie123';
 	
-			// check if DB exists if not create
-			nano.db.create(dbCredentials.dbName, function (err/*, res*/) {
-				if (err) { console.log('could not create db ', err); }
-		    });
-			db = nano.use(dbCredentials.dbName);
+			// // check if DB exists if not create
+			// nano.db.create(dbCredentials.dbName, function (err/*, res*/) {
+			// 	if (err) { console.log('could not create db ', err); }
+		 //    });
+			// db = nano.use(dbCredentials.dbName);
 		// } else {
 		// 	console.log('Could not find nano credentials in VCAP_SERVICES environment variable');
 		// }
