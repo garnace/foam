@@ -1,4 +1,4 @@
 $( "html" ).on("click", function() {
-  window.location.href='secondPage.html';
+  window.location.href='q.html';
 });
 

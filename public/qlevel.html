@@ -7,6 +7,11 @@
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/quiz.js"></script>
 <script type="text/javascript" src="scripts/jquery.tools.min.js"></script>
+<script>
+	function redirectPage() {
+		location.href = 'randomRecipe' + location.search + '&expertise=1';
+	}
+</script>
 </head>
 <body style="background-image:url('icx/4_rate_skill_bg.png');">
 <div id="container">
@@ -19,16 +24,16 @@
 		<center>
 		<table border="1" width="90%" style="border:3px dashed black;">
 			<tr>
-				 <td bgcolor="#8B795E" onclick="location.href='qrecipe.html';"><center><p style="font-family:courier;font-size:150%;">I'm Level...<img src="icx/expert.gif" width="120"/></p></center></td>
+				 <td bgcolor="#8B795E" onclick="redirectPage()"><center><p style="font-family:courier;font-size:150%;">I'm Level...<img src="icx/expert.gif" width="120"/></p></center></td>
 			</tr>
 
 
 			<tr>
-				 <td bgcolor="#8B795E" onclick="location.href='qrecipe.html';"><center><p style="font-family:courier;font-size:150%;">I'm Level...<img src="icx/interme.gif" width="120"/></p></center></td>
+				 <td bgcolor="#8B795E" onclick="redirectPage()';"><center><p style="font-family:courier;font-size:150%;">I'm Level...<img src="icx/interme.gif" width="120"/></p></center></td>
 			</tr>
 
 			<tr>
-				 <td bgcolor="#8B795E" onclick="location.href='qrecipe.html';"><center><p style="font-family:courier;font-size:150%;">I'm Level..<img src="icx/beginner.gif" width="120"/></p></center></td>
+				 <td bgcolor="#8B795E" onclick="redirectPage()"><center><p style="font-family:courier;font-size:150%;">I'm Level..<img src="icx/beginner.gif" width="120"/></p></center></td>
 			</tr>
 
 
