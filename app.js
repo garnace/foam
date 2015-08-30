@@ -85,9 +85,9 @@ function initDBConnection() {
 
 initDBConnection();
 
-app.get('/', routes.index);
+app.get('/old', routes.index);
 app.use('/api/v1/recipes', recipesModel.getRecipes);
-app.get('/landingPage', serveFirstPage);
+app.get('/', serveFirstPage);
 app.get('/randomRecipe', serveRandomRecipe);
 
 function serveFirstPage(req, res) {

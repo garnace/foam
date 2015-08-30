@@ -4,5 +4,5 @@
  */
 
 exports.index = function(req, res){
-  res.render('index.html', { title: 'Cloudant Boiler Plate' });
+  res.render('old_index.html', { title: 'Cloudant Boiler Plate' });
 };
