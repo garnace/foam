@@ -8,12 +8,12 @@ var app = express();
 
 var db;
 
-var cloudant;
+var nano = require('nano')('https://moodyfoodie:moodyfoodie123@moodyfoodie.cloudant.com');
 
 var fileToUpload;
 
 var dbCredentials = {
-	dbName : 'my_sample_db'
+	dbName : 'recipes'
 };
 
 var bodyParser = require('body-parser');
@@ -41,38 +41,35 @@ if ('development' == app.get('env')) {
 }
 
 function initDBConnection() {
-	
-	if(process.env.VCAP_SERVICES) {
-		var vcapServices = JSON.parse(process.env.VCAP_SERVICES);
-		if(vcapServices.cloudantNoSQLDB) {
-			dbCredentials.host = vcapServices.cloudantNoSQLDB[0].credentials.host;
-			dbCredentials.port = vcapServices.cloudantNoSQLDB[0].credentials.port;
-			dbCredentials.user = vcapServices.cloudantNoSQLDB[0].credentials.username;
-			dbCredentials.password = vcapServices.cloudantNoSQLDB[0].credentials.password;
-			dbCredentials.url = vcapServices.cloudantNoSQLDB[0].credentials.url;
-			cloudant = require('cloudant')(dbCredentials.url);
+	// if(process.env.VCAP_SERVICES) {
+		// var vcapServices = JSON.parse(process.env.VCAP_SERVICES);
+		// if(vcapServices.cloudantNoSQLDB) {
+			dbCredentials.host = 'moodyfoodie.cloudant.com';
+			dbCredentials.port = 443;
+			dbCredentials.user = 'moodyfoodie';
+			dbCredentials.password = 'moodyfoodie123';
 	
 			// check if DB exists if not create
-			cloudant.db.create(dbCredentials.dbName, function (err, res) {
+			nano.db.create(dbCredentials.dbName, function (err/*, res*/) {
 				if (err) { console.log('could not create db ', err); }
 		    });
-			db = cloudant.use(dbCredentials.dbName);
-		} else {
-			console.log('Could not find Cloudant credentials in VCAP_SERVICES environment variable');
-		}
-	} else{
-		console.log('VCAP_SERVICES environment variable not set');
-		// For running this app locally you can get your Cloudant credentials 
-		// from Bluemix (VCAP_SERVICES in "cf env" output or the Environment 
+			db = nano.use(dbCredentials.dbName);
+		// } else {
+		// 	console.log('Could not find nano credentials in VCAP_SERVICES environment variable');
+		// }
+	// } else{
+	// 	console.log('VCAP_SERVICES environment variable not set');
+		// For running this app locally you can get your nano credentials 
+		// from Bluemix (VCAP_SERVICES in 'cf env' output or the Environment 
 		// Variables section for an app in the Bluemix console dashboard).
 		// Alternately you could point to a local database here instead of a 
 		// Bluemix service.
-		//dbCredentials.host = "REPLACE ME";
+		//dbCredentials.host = 'REPLACE ME';
 		//dbCredentials.port = REPLACE ME;
-		//dbCredentials.user = "REPLACE ME";
-		//dbCredentials.password = "REPLACE ME";
-		//dbCredentials.url = "REPLACE ME";
-	}
+		//dbCredentials.user = 'REPLACE ME';
+		//dbCredentials.password = 'REPLACE ME';
+		//dbCredentials.url = 'REPLACE ME';
+	// }
 
 	
 }
@@ -80,6 +77,7 @@ function initDBConnection() {
 initDBConnection();
 
 app.get('/', routes.index);
+app.use('/api/v1/recipes', require('./routes/recipes').getRecipes);
 
 function createResponseData(id, name, value, attachments) {
 
@@ -95,9 +93,9 @@ function createResponseData(id, name, value, attachments) {
 		var attachmentData = {
 			content_type : item.type,
 			key : item.key,
-			url : 'http://' + dbCredentials.user + ":" + dbCredentials.password
+			url : 'http://' + dbCredentials.user + ':' + dbCredentials.password
 					+ '@' + dbCredentials.host + '/' + dbCredentials.dbName
-					+ "/" + id + '/' + item.key
+					+ '/' + id + '/' + item.key
 		};
 		responseData.attachements.push(attachmentData);
 		
@@ -129,7 +127,7 @@ var saveDocument = function(id, name, value, response) {
 
 app.post('/api/favorites/attach', multipartMiddleware, function(request, response) {
 
-	console.log("Upload File Invoked..");
+	console.log('Upload File Invoked..');
 	console.log('Request: ' + JSON.stringify(request.headers));
 	
 	var id;
@@ -168,9 +166,9 @@ app.post('/api/favorites/attach', multipartMiddleware, function(request, respons
 									var attachData;
 									for(var attachment in doc._attachments) {
 										if(attachment == value) {
-											attachData = {"key": attachment, "type": file.type};
+											attachData = {'key': attachment, 'type': file.type};
 										} else {
-											attachData = {"key": attachment, "type": doc._attachments[attachment]['content_type']};
+											attachData = {'key': attachment, 'type': doc._attachments[attachment]['content_type']};
 										}
 										attachements.push(attachData);
 									}
@@ -210,7 +208,7 @@ app.post('/api/favorites/attach', multipartMiddleware, function(request, respons
 				} else {
 					
 					existingdoc = doc;
-					console.log("New doc created ..");
+					console.log('New doc created ..');
 					console.log(existingdoc);
 					insertAttachment(file, existingdoc.id, existingdoc.rev, name, value, response);
 					
@@ -229,9 +227,9 @@ app.post('/api/favorites/attach', multipartMiddleware, function(request, respons
 
 app.post('/api/favorites', function(request, response) {
 
-	console.log("Create Invoked..");
-	console.log("Name: " + request.body.name);
-	console.log("Value: " + request.body.value);
+	console.log('Create Invoked..');
+	console.log('Name: ' + request.body.name);
+	console.log('Value: ' + request.body.value);
 	
 	// var id = request.body.id;
 	var name = request.body.name;
@@ -243,11 +241,11 @@ app.post('/api/favorites', function(request, response) {
 
 app.delete('/api/favorites', function(request, response) {
 
-	console.log("Delete Invoked..");
+	console.log('Delete Invoked..');
 	var id = request.query.id;
 	// var rev = request.query.rev; // Rev can be fetched from request. if
 	// needed, send the rev from client
-	console.log("Removing document of ID: " + id);
+	console.log('Removing document of ID: ' + id);
 	console.log('Request Query: '+JSON.stringify(request.query));
 	
 	db.get(id, { revs_info: true }, function(err, doc) {
@@ -268,13 +266,13 @@ app.delete('/api/favorites', function(request, response) {
 
 app.put('/api/favorites', function(request, response) {
 
-	console.log("Update Invoked..");
+	console.log('Update Invoked..');
 	
 	var id = request.body.id;
 	var name = request.body.name;
 	var value = request.body.value;
 	
-	console.log("ID: " + id);
+	console.log('ID: ' + id);
 	
 	db.get(id, { revs_info: true }, function(err, doc) {
 		if (!err) {
@@ -294,9 +292,9 @@ app.put('/api/favorites', function(request, response) {
 
 app.get('/api/favorites', function(request, response) {
 
-	console.log("Get method invoked.. ")
-	if (cloudant) {
-		db = cloudant.use(dbCredentials.dbName);
+	console.log('Get method invoked.. ')
+	if (nano) {
+		db = nano.use(dbCredentials.dbName);
 		var docList = [];
 		var i = 0;
 		db.list(function(err, body) {
@@ -341,9 +339,9 @@ app.get('/api/favorites', function(request, response) {
 									for(var attribute in doc['_attachments']){
 									
 										if(doc['_attachments'][attribute] && doc['_attachments'][attribute]['content_type']) {
-											attachments.push({"key": attribute, "type": doc['_attachments'][attribute]['content_type']});
+											attachments.push({'key': attribute, 'type': doc['_attachments'][attribute]['content_type']});
 										}
-										console.log(attribute+": "+JSON.stringify(doc['_attachments'][attribute]));
+										console.log(attribute+': '+JSON.stringify(doc['_attachments'][attribute]));
 									}
 									var responseData = createResponseData(
 											doc._id,

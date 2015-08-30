@@ -1,3 +1,6 @@
+declared-servies:
+  cloudant-no-sql-dev
+    cloudantNoSQLDB
 applications:
 - disk_quota: 1024M
   host: moodyfoodie
