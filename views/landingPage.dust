@@ -6,7 +6,6 @@
 
 </head>
 <body style="background-image: url({backgroundImage})">
-	hm
 	<div class="frame" id="logo">
       <img id="image" src="../images/backgrounds/scaledDownLogo.jpg" />
     </div>
