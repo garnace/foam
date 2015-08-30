@@ -33,7 +33,7 @@ exports.getRecipes = function(req, res) {
 		}
 	}
 
-	res.json(possibleOptions[utils.getRandomArbitrary(0, possibleOptions.length - 1)]);
+	res.json(possibleOptions[utils.getRandomInt(0, possibleOptions.length - 1)]);
 
 };
 

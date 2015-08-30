@@ -2,9 +2,17 @@
  * Module dependencies.
  */
 
-var express = require('express'), routes = require('./routes'), user = require('./routes/user'), http = require('http'), path = require('path'), fs = require('fs');
+var express = require('express'), routes = require('./routes'), user = require('./routes/user'), http = require('http'), path = require('path'), fs = require('fs'),
+cons = require('consolidate'),
+  dust = require('dustjs-linkedin'),
+  utils = require('./model/utils');
 
+dust.config.whitespace = true;
 var app = express();
+
+app.engine('dust', cons.dust);
+app.set('view engine', 'dust');
+app.set('views', __dirname + '/views');
 
 var db;
 
@@ -25,9 +33,9 @@ var multipartMiddleware = multipart();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-app.engine('html', require('ejs').renderFile);
+// app.set('views', __dirname + '/views');
+// app.set('view engine', 'ejs');
+// app.engine('html', require('ejs').renderFile);
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -78,6 +86,27 @@ initDBConnection();
 
 app.get('/', routes.index);
 app.use('/api/v1/recipes', require('./routes/recipes').getRecipes);
+app.get('/landingPage', serveFirstPage);
+
+function serveFirstPage(req, res) {
+	var randomInt = utils.getRandomInt(0, 2);
+
+	var backgroundPath = '/images/backgrounds/';
+	if (randomInt === 0) {
+		backgroundPath += 'citrus.jpg';
+	}
+	else if (randomInt === 1) {
+		backgroundPath += 'doughnut.jpg';
+	}
+	else if (randomInt === 2) {
+		backgroundPath += 'strawberry.jpg';
+	}
+	else {
+		backgroundPath += 'citrus.jpg';
+	}
+
+	res.render('landingPage', {backgroundImage: backgroundPath})
+}
 
 function createResponseData(id, name, value, attachments) {
 
