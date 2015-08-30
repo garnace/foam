@@ -7,7 +7,18 @@
 			"expertise": 1,
 			"ingredients": ["4 slices White Bread","2 slices Cheddar Cheese","3 tbsp Butter, divided"], 
 			"steps": ["Preheat skillet","Melt butter in skillet","Assemble bread, cheese, bread into sandwich","Place sandwich in pan","Flip sandwich after 2-3 minutes or until golden brown","Repeat for 2nd sandwich"],
-			"name": "Grilled Cheese Sandwich"
+			"name": "Grilled Cheese Sandwich",
+			"imageUrl": "https://farm5.staticflickr.com/4017/4541489084_968537a08f_b.jpg"
+		},
+		{
+			"tags": [""],
+			"moods": ["stressed"],
+			"time": 2, 
+			"expertise": 2,
+			"ingredients": ["2 lbs Lean Ground Beef", "1 Onion, Chopped", "2 Red Bell Peppers, Seeded and Diced","2 Jalapeno Peppers, Seeded and Diced","4 Cloves Garlic, Minced","1/2 Cup Chili Powder","1/4 Cup Ground Cumin","1 tsp Salt","1 sp Ground Black Pepper", "1 Can Tomato Paste (6 oz)", "4 Cans Kidney Beans with Liquid (15 oz)", "1 can Italian-style Stewed Tomatoes (14.5 oz)", "1 Can Chipotle Peppers in Adobo Sauce (7 oz)", "1 quart water, divided", "1/4 cup All-purpose Flour", "1 tbsp Rice Vinegar"], 
+			"steps": ["Cook beef in large pot over medium heat until brown, drain", "Return beef to pot and stir in onions, bell peppers and jalapenos. Cook until tender", "Add garlic and cook 1 minute more", "Season with chili powder, cumin, satl and pepper. Add in tomato paste and kidney beans with liquid", "Puree tomatoes and chipotle peppers in food processor until smooth", "Add mixture to pot with 3 cups water", "Combine remaining 1 cup water with floud in a jar and shake to combine", "Pour flour mixture into chili and stir in vinegar", "Simmer 45 minutes and serve."],
+			"name": "Chilli",
+			"imageUrl": "https://farm6.staticflickr.com/5536/11517840353_4081b7a6e5_b.jpg"
 		}
 	]
 	

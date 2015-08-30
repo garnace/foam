@@ -5,7 +5,8 @@
 var express = require('express'), routes = require('./routes'), user = require('./routes/user'), http = require('http'), path = require('path'), fs = require('fs'),
 cons = require('consolidate'),
   dust = require('dustjs-linkedin'),
-  utils = require('./model/utils');
+  utils = require('./model/utils'),
+  recipesModel = require('./routes/recipes');
 
 dust.config.whitespace = true;
 var app = express();
@@ -85,8 +86,9 @@ function initDBConnection() {
 initDBConnection();
 
 app.get('/', routes.index);
-app.use('/api/v1/recipes', require('./routes/recipes').getRecipes);
+app.use('/api/v1/recipes', recipesModel.getRecipes);
 app.get('/landingPage', serveFirstPage);
+app.get('/randomRecipe', serveRandomRecipe);
 
 function serveFirstPage(req, res) {
 	var randomInt = utils.getRandomInt(0, 2);
@@ -106,6 +108,32 @@ function serveFirstPage(req, res) {
 	}
 
 	res.render('landingPage', {backgroundImage: backgroundPath})
+}
+
+function serveRandomRecipe(req, res) {
+	var mood = req.query.mood;
+	var time = req.query.time;
+	var expertise = req.query.expertise;
+
+	if (!mood) {
+		return res.status(400).send('Query Param Mood must be defined');
+	}
+
+	if (!time) {
+		return res.status(400).send('Query Param Time must be defined');
+	}
+
+	if (!expertise) {
+		return res.status(400).send('Query Param Expertise must be defined');
+	}
+
+	var timeInt = parseInt(time);
+	var expertiseInt = parseInt(expertise);
+	var recipe = recipesModel.getRandomRecipe(mood, timeInt, expertiseInt);
+	console.log(JSON.stringify(recipe, null, 2));
+	var backgroundPath = '/images/backgrounds/recipe_page05background.png';
+
+	res.render('randomRecipe', {recipe: recipe, backgroundImage: backgroundPath});
 }
 
 function createResponseData(id, name, value, attachments) {

@@ -9,15 +9,15 @@ exports.getRecipes = function(req, res) {
 	var expertise = req.query.expertise;
 
 	if (!mood) {
-		res.status(400).send('Query Param Mood must be defined');
+		return res.status(400).send('Query Param Mood must be defined');
 	}
 
 	if (!time) {
-		res.status(400).send('Query Param Time must be defined');
+		return res.status(400).send('Query Param Time must be defined');
 	}
 
 	if (!expertise) {
-		res.status(400).send('Query Param Expertise must be defined');
+		return res.status(400).send('Query Param Expertise must be defined');
 	}
 
 	var timeInt = parseInt(time);
@@ -34,6 +34,20 @@ exports.getRecipes = function(req, res) {
 	}
 
 	res.json(possibleOptions[utils.getRandomInt(0, possibleOptions.length - 1)]);
+
+};
+
+exports.getRandomRecipe = function(mood, time, expertise) {
+	var possibleOptions = [];
+	for (var i = 0; i < recipesObject.recipes.length; i++) {
+		var currentRecipe = recipesObject.recipes[i];
+		for (var j = 0; j < currentRecipe.moods.length; j++) {
+			if (mood === currentRecipe.moods[j] && time === currentRecipe.time && expertise === currentRecipe.expertise) {
+				possibleOptions.push(currentRecipe);
+			}
+		}
+	}
+	return possibleOptions[utils.getRandomInt(0, possibleOptions.length - 1)];
 
 };
 
