@@ -6,7 +6,29 @@
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/quiz.js"></script>
+
 <script type="text/javascript" src="scripts/jquery.tools.min.js"></script>
+
+<script>
+	function redirectPage(mId) {
+//		if (location.search != null){
+//		location.href = 'qlevel.html' + location.search + '&time=2';
+		location.href = 'qtime.html' + '?mood='+mId;
+//		}else{		alert('Error, starting over');
+//		location.href = 'q.html';}
+	}
+
+
+
+/*	function redirectPage() {
+		location.href = 'randomRecipe' + location.search + '&expertise=1';
+
+	}
+*/
+</script>
+
+
+
 </head>
 <body style="background-image:url('../icx/2_Rate_Mood_bg.png');">
 <div id="container">
@@ -19,16 +41,16 @@
 		<center>
 		<table border="1" width="90%" style="border:3px dashed black;">
 			<tr>
-				 <td bgcolor="#8B795E" onclick="location.href='qtime.html?mood=lazy';"><center><p style="font-family:courier;font-size:150%;">I Feel...<img src="icx/adven-icon.png" width="120"/></p></center></td>
+				 <td bgcolor="#8B795E" onclick="redirectPage(1);"><center><p style="font-family:courier;font-size:150%;">I Feel...<img src="icx/adven-icon.png" width="120"/></p></center></td>
 			</tr>
 
 
 			<tr>
-				 <td bgcolor="#8B795E" onclick="location.href='qtime.html?mood=lazy';"><center><p style="font-family:courier;font-size:150%;">I Feel...<img src="icx/lazy-icon.png" width="120"/></p></center></td>
+				 <td bgcolor="#8B795E" onclick="redirectPage(2);"><center><p style="font-family:courier;font-size:150%;">I Feel...<img src="icx/lazy-icon.png" width="120"/></p></center></td>
 			</tr>
 
 			<tr>
-				 <td bgcolor="#8B795E" onclick="location.href='qtime.html?mood=lazy';"><center><p style="font-family:courier;font-size:150%;">I Feel...<img src="icx/stressed-icon.png" width="120"/></p></center></td>
+				 <td bgcolor="#8B795E" onclick="redirectPage(3);"><center><p style="font-family:courier;font-size:150%;">I Feel...<img src="icx/stressed-icon.png" width="120"/></p></center></td>
 			</tr>
 
 

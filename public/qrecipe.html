@@ -7,7 +7,55 @@
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/quiz.js"></script>
 <script type="text/javascript" src="scripts/jquery.tools.min.js"></script>
-<script>
+<script type="text/javascript">
+/*var key;
+var query=window.location.href.split('?')[1];
+
+var params= query.split('&');
+
+var pairs={};
+
+var pair= params.split('=');
+var levels= new Array();
+
+var urlS="Expert";
+*/
+$(document).ready(function(){
+
+var query=window.location.href.split('?')[1];
+var queryat = query.split('&');
+levels=['unspecified','expert','intermediate','beginner'];
+var pair = new Array();
+var lenq =  queryat.length;
+var pairs={};
+//
+
+if (query != null) {
+  if (lenq > 0)
+  {
+	for (var l =0; l< queryat.length;l++){
+		pair=queryat[l].split('=');
+		pairs[pair[0]]=pair[1];
+	}
+  }
+  else
+  {
+	pair[0]=query.split('=')[0];
+	pair[1]=query.split('=')[1];
+  }
+
+}
+else {
+pair=['level','expert'];
+
+}
+
+//alert("ready"+query+pair[0].toString()+levels[2].toString());
+alert("ready"+query+pair[0].toString());
+document.getElementById("titleU").innerHTML="<center><p style=\"color:red;\">"+levels[pairs['expertise']].toString()+"Level</p></center>";
+
+
+});
 
 </script>
 </head>
@@ -16,7 +64,8 @@
 	<div id="title">
 		<center><img src = "icx/moodyfoodie-logo.png"></center>
 
-				 <center><p style="font-family:courier;font-size:150%;">Your recipe:<img src="icx/recipe_page_mockup.png" width="120"/>  Choose to...</p></center>
+        <div id="titleU"></div>
+				 <center><p id="urltxt"></p><p id="paraid" style="font-family:courier;font-size:150%;">Your recipe:<img src="icx/recipe_page_mockup.png" width="120"/>  Choose to...</p></center>
 	</div>
 	<BR>
 	<div id="questionlist">
