@@ -49,7 +49,7 @@
 	function redirectPage(mId) {
 //		if (location.search != null){
 //		location.href = 'qlevel.html' + location.search + '&time=2';
-		location.href = 'qstime.html' + '?mood='+mId;
+		location.href = 'qtime.html' + '?mood='+mId;
 //		}else{		alert('Error, starting over');
 //		location.href = 'q.html';}
 	}
@@ -172,7 +172,7 @@ function getM()
 
 <li id="b3"><a href="#" onclick="getM();"><center><p>I Feel...&nbsp;&nbsp;&nbsp;<img src="icx/adven-icon.png" width="140" style="margin-right:auto;"/></p></center></a><a href="#">button</a></li>
 <li id="b3">
-    <a href="#" onclick="redirectPage(1);">
+    <a href="#" onclick="getM();">
      <div class="imgAlign">	
       <img src="icx/adven-icon.png"  />
      </div>
@@ -182,7 +182,7 @@ function getM()
 </li>
 
 <li id="b3">
-    <a href="#" onclick="redirectPage(2);">
+    <a href="#" onclick="getM();">
      <div class="imgAlign">	
       <img src="icx/lazy-icon.png"  />
      </div>
@@ -191,7 +191,7 @@ function getM()
     </a><a href="#">button</a>
 </li>
 <li id="b3">
-    <a href="#" onclick="redirectPage(3);">
+    <a href="#" onclick="getM();">
      <div class="imgAlign">	
       <img src="icx/stressed-icon.png"  />
      </div>

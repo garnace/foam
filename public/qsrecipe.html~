@@ -1,0 +1,253 @@
+<!DOCTTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" id="viewport" content="width=device-width, height=device-height, user-scalable=no" />
+
+<title>FoodyMoodie</title>
+
+<!--meta name="viewport" content="width=device-width,initial-scale=1"-->
+
+<link href="css/style.css" rel="stylesheet" type="text/css" title="starA">
+<link href="cf/theme/css/less-style.css" rel="stylesheet" type="text/css">
+<link href="cf/theme/css/bootstrap.css" rel="stylesheet" type="text/css" title="vstarA">
+<link href="b320/css/bootstrap.css" rel="stylesheet" type="text/css" title="starvA">
+<!--link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css" rel="stylesheet"-->
+
+<!--################################3##3##########33#####33#-->
+<!--link href="b320/css/bootstrap.css" rel="stylesheet" type="text/css" -->
+
+<!--link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet"-->
+
+<!--link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" rel="stylesheet"-->
+<!--################################3##3##########33#####33#-->
+
+<!--vadrlink type="text/css" href="css/ui-lightness/jquery-ui-1.8.23.custom.css" rel="stylesheet" title="starA"-->
+<link href="http://code.jquery.com/ui/1.8.23/themes/trontastic/jquery-ui.css" rel="stylesheet" type="text/css" >
+<!-- ********************cake links**********************************-->
+
+<link href="cf/theme/css/flexslider.css" rel="stylesheet">
+<link href="css/prettyPhoto.css" rel="stylesheet">
+<link href="cf/theme/css/font-awesome.min.css" rel="stylesheet">
+<!--link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"-->
+<link href="css/bootstrap-glyphicons.css" rel="stylesheet">
+<link href="css/jqm/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+
+<!--script type="text/javascript" src="scripts/jquery.js"></script-->
+<script type="text/javascript" src="scripts/jquery-1.8.0.min.js"></script>
+<!--script type="text/javascript" src="scripts/jquery-ui-1.8.23.custom.min.js"></script-->
+<!--script type="text/javascript" src="scripts/jquery.tools.min.js"></script-->
+
+
+
+<script type="text/javascript" src="scripts/jqm/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src="scripts/jquery.quickflip.min.js"></script>
+
+<!--script type="text/javascript" src="scripts/im.js"></script-->
+<script type="text/javascript" src="scripts/script.js"></script>
+<script type="text/javascript" >
+
+
+/*var key;
+var query=window.location.href.split('?')[1];
+
+var params= query.split('&');
+
+var pairs={};
+
+var pair= params.split('=');
+var levels= new Array();
+
+var urlS="Expert";
+*/
+
+
+$(document).ready(function(){
+
+var query=window.location.href.split('?')[1];
+var queryat = query.split('&');
+var backG = new Array();
+
+backG= ['icx/4_rate_skill_bg.png','icx/recipe_page05background.png','icx/3_rate_time_bg.png'];
+var ranG = Math.floor(Math.random()*backG.length);
+
+
+
+
+
+levels=['unspecified','expert','intermediate','beginner'];
+var pair = new Array();
+var lenq =  queryat.length;
+var pairs={};
+//
+
+//$('div[data-role=header]').css({background-image:url('icx/3_rate_time_bg.png')});
+//$('div[class*=qww]').css({background-image:url('icx/3_rate_time_bg.png')});
+//$("div[class*=qww]").css({background-color:'#888888'});
+//$(".qww1").css({background-color:"#888888"});
+//$(".qww1").html("<p>OoOo</p>").css({background:"#777777",textAlign:"center"});
+//$("div[class*=qww1]").html("<p>OoOo</p>").css({background:"#777777",textAlign:"center",font:"25px Helvetica, Arial, Sans-Serif, black",fontSize:"250%",color:"black"}).css('color','red');
+//$("div[class*=qww1]").css({background:"#007777",textAlign:"center"});
+
+
+
+$("div[class*=qww1]").css({background:"url("+backG[ranG]+")",textAlign:"center"});
+//$('div[class*=qww]').css({background-color:'yellow'});
+
+if (query != null) {
+  if (lenq > 0)
+  {
+	for (var l =0; l< queryat.length;l++){
+		pair=queryat[l].split('=');
+		pairs[pair[0]]=pair[1];
+	}
+  }
+  else
+  {
+	pair[0]=query.split('=')[0];
+	pair[1]=query.split('=')[1];
+  }
+
+}
+else {
+pair=['level','expert0'];
+
+}
+
+//alert("ready"+query+pair[0].toString()+levels[2].toString());
+alert("ready"+query+pair[0].toString());
+
+document.getElementById("titleU").innerHTML="<center><p style=\"color:red;font-size=180%\">"+levels[pairs['expertise']].toString()+"Level</p></center>";
+
+
+});
+
+function getM()
+{
+	alert('button');
+}
+
+
+
+</script>
+</head>
+<body onload="load(0);" style="background-image:url('icx/recipe_page05background.png');" >
+<!--body onload="load(0);" style="background-image:url('icx/4_rate_skill_bg.png');"-->
+
+<div data-role="page" style="background-image:url('icx/recipe_page05background.png');">
+<!--div data-role="header" style="background-image:url('icx/recipe_page05background.png');"-->
+<!--div data-role="header" style="background-color:red;"-->
+<div data-role="header" class="qww1"  >
+
+	<div id="title">
+		<center><img src = "icx/moodyfoodie-logo.png"></center>
+
+	</div>
+
+
+
+<div class="ui-bar ui-bar-b"  style="font-family: 'Droid Serif', serif; !important;">
+<!--div class="ui-bar ui-bar-b"  style="background:#8B795E;font-family: 'Droid Serif', serif; !important;"-->
+<!--h3>div bar</h3-->
+<!--a href="#" data-role="button">button</a-->
+<center><p style="font-size:180%;!important;">Describe your expertise level...</p></center>
+<center><p style="font-size:180%;!important;">Describe your expertise level...</p></center>
+        <div id="titleU"></div>
+	<p>Hello<p>
+	<div>
+				 <center><p id="urltxt"></p><p id="paraid" style="font-family:courier;font-size:150%;">Your recipe:<img src="icx/recipe_page_mockup.png" width="120"/>  Choose to...</p></center>
+	</div>
+
+
+
+
+</div><!--ui toolbar-->
+
+
+
+</div>
+
+
+
+<div data-role="content">
+<center><ul data-role="listview" data-inset="true" data-split-icon="gear" style="width:80%" class="odd-thumb">
+
+<li id="b3">
+    <a href="#" onclick="getM();">
+     <div class="imgAlign">	
+      <img src="icx/expert.gif"  />
+     </div>
+      <center><h2>Cook this</h2></center>
+      <center><p>I say yes.</p></center>
+    </a><a href="#">button</a>
+</li>
+
+<li id="b3">
+    <a href="#" onclick="getM();">
+     <div class="imgAlign">	
+      <img src="icx/interme.gif"  />
+     </div>
+      <center><h2>Don't cook this</h2></center>
+      <center><p>Show me something else.</p></center>
+    </a><a href="#">button</a>
+</li>
+<li id="b3">
+    <a href="#" onclick="redirectPage(3);">
+     <div class="imgAlign">	
+      <img src="icx/beginner.gif"  />
+     </div>
+      <center><h2>Beginner</h2></center>
+      <center><p>This is all new to me.</p></center>
+    </a><a href="#">button</a>
+</li>
+
+
+
+
+
+</ul></center>
+<br>
+<br>
+<p>helloo world<a href="#second" data-transition="mine">go second</a></p>
+<p>helloo world<a href="#third" id="m">go third</a></p>
+</div>
+
+
+<div data-role="footer" style="background-image:url('icx/4_rate_skill_bg.png');">
+	<div id="button">
+		<center><input type="button" onclick="location.href='qslevel.html'" value="Back"> <input type='button' value='Home' onclick="location.href='index.html';"></center>
+	</div>
+
+
+
+	<div id="title">
+		<center><img src = "icx/moodyfoodie-logo.png"></center>
+
+	</div>
+
+
+
+
+
+
+</div>
+
+
+</div><!--page-->
+
+
+<div data-role="page" id="second">
+<div data-role="header">
+<h1>second</h1>
+</div>
+
+
+<div data-role="content">
+<p>hello world</p>
+</div>
+
+
+</div>
+
+</body>
+</html>

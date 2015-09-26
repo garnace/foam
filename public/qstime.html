@@ -46,10 +46,11 @@
 <script type="text/javascript" src="scripts/script.js"></script>
 <script type="text/javascript" >
 
-	function redirectPage(mId) {
+	function redirectPage(tId) {
 //		if (location.search != null){
-//		location.href = 'qlevel.html' + location.search + '&time=2';
-		location.href = 'qstime.html' + '?mood='+mId;
+
+		location.href = 'qslevel.html' + location.search + '&time='+tId;
+//		location.href = 'qtime.html' + '?mood='+mId;
 //		}else{		alert('Error, starting over');
 //		location.href = 'q.html';}
 	}
@@ -137,11 +138,11 @@ function getM()
 
 </script>
 </head>
-<body onload="load(0);" style="background-image:url('icx/2_Rate_Mood_bg.png');"  >
+<body onload="load(0);" style="background-image:url('icx/3_rate_time_bg.png');"  >
 
 
-<div data-role="page" style="background-image:url('icx/2_Rate_Mood_bg.png');">
-<div data-role="header" style="background-image:url('icx/2_Rate_Mood_bg.png');">
+<div data-role="page" style="background-image:url('icx/3_rate_time_bg.png');">
+<div data-role="header" style="background-image:url('icx/3_rate_time_bg.png');">
 
 	<div id="title">
 		<center><img src = "icx/moodyfoodie-logo.png"></center>
@@ -154,7 +155,7 @@ function getM()
 <!--div class="ui-bar ui-bar-b"  style="background:#8B795E;font-family: 'Droid Serif', serif; !important;"-->
 <!--h3>div bar</h3-->
 <!--a href="#" data-role="button">button</a-->
-<center><p style="font-size:180%;!important;">Describe your mood...</p></center>
+<center><p style="font-size:180%;!important;">Describe your time constraints...</p></center>
 </div><!--ui toolbar-->
 
 
@@ -165,59 +166,37 @@ function getM()
 
 <div data-role="content">
 <center><ul data-role="listview" data-inset="true" data-split-icon="gear" style="width:80%" class="odd-thumb">
-<li id="b1"><a href="#" id="a1">one</a><a href="#">button</a></li>
-<li id="b2"><a href="#">two</a><a href="#">button</a></li>
-<li id="b3"><a href="#" onclick="getM();">I Feel...<center><p>I Feel...&nbsp;&nbsp;&nbsp;<img src="icx/adven-icon.png" width="140" style="margin-right:auto;"/></p></center></a><a href="#">button</a></li>
 
-
-<li id="b3"><a href="#" onclick="getM();"><center><p>I Feel...&nbsp;&nbsp;&nbsp;<img src="icx/adven-icon.png" width="140" style="margin-right:auto;"/></p></center></a><a href="#">button</a></li>
 <li id="b3">
     <a href="#" onclick="redirectPage(1);">
      <div class="imgAlign">	
-      <img src="icx/adven-icon.png"  />
+      <img src="images/1hr.gif"  />
      </div>
-      <center><h2>Adventurous</h2></center>
-      <center><p>try something new</p></center>
+      <center><h2>One Hour, or more</h2></center>
+      <center><p>Won't take too long</p></center>
     </a><a href="#">button</a>
 </li>
 
 <li id="b3">
     <a href="#" onclick="redirectPage(2);">
      <div class="imgAlign">	
-      <img src="icx/lazy-icon.png"  />
+      <img src="images/2hr.gif"  />
      </div>
-      <center><h2>Lazy</h2></center>
-      <center><p>Dont challenge me.</p></center>
+      <center><h2>2+ Hours</h2></center>
+      <center><p>Time to experiment.</p></center>
     </a><a href="#">button</a>
 </li>
 <li id="b3">
     <a href="#" onclick="redirectPage(3);">
      <div class="imgAlign">	
-      <img src="icx/stressed-icon.png"  />
+      <img src="images/5min.gif"  />
      </div>
-      <center><h2>Stressed</h2></center>
-      <center><p>Comforting and Quick.</p></center>
+      <center><h2>5+ minutes</h2></center>
+      <center><p>Quick. Throw something good in.</p></center>
     </a><a href="#">button</a>
 </li>
 
 
-<li id="b3"><a href="#" onclick="getM();">3</a><a href="#">button</a></li>
-
-
-
-
-
-<li id="b3">
-    <a href="#" onclick="getM();">
-     <div class="imgAlign">	
-      <!--img src="icx/adven-icon.png"  /-->
-      <p>I feel</p>
-     </div>
-      <center><h2>Adventurous</h2></center>
-<center><p>I Feel...&nbsp;&nbsp;&nbsp;<img src="icx/adven-icon.png" width="140" style="margin-right:auto;"/></p></center>
-      <center><p>try something new</p></center>
-    </a><a href="#">button</a></li>
-<li id="b3"><a href="#" onclick="getM();">3</a><a href="#">button</a></li>
 
 
 
@@ -226,34 +205,23 @@ function getM()
 <br>
 <p>helloo world<a href="#second" data-transition="mine">go second</a></p>
 <p>helloo world<a href="#third" id="m">go third</a></p>
-<div id="hero" class="hero-unit">
-<div id="imdiv">
-	<!--div class="quickflip-wrapper"-->
-	<!--div ><a href="#" class="quickFlipCta"><img src="images/Yoursky.gif" /></a></div-->
-	<!--div ><a href="#" class="quickFlipCta"> <img src="images/ss036.gif" /></a>  </div-->
-	<!--/div-->
-<!--img src="i/img/dish/dish1.jpg" width="50" height="50"/-->
-
-</br>
-<div id="images" >
-</div><!--imdiv images-->
-
-</div><!--imdiv-->
-
-
-
-<div id="imdivp" >
-
-
-<div id="imagesp">
-</div><!--imdiv imagesp-->
-
-</div><!--imdiv-->
-<br/>
-<a id="fb3" class="btn btn-large btn-success" style="padding:15px 10px 8px 10px; padding-top:20;" onclick="getAniMM(2);">Animate</a>
-
-</div><!--hero-->
 </div>
+
+
+<div data-role="footer" style="background-image:url('icx/3_rate_time_bg.png');">
+
+	<div id="title">
+		<center><img src = "icx/moodyfoodie-logo.png"></center>
+
+	</div>
+
+
+
+
+
+
+</div>
+
 
 </div><!--page-->
 
