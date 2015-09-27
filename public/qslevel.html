@@ -48,8 +48,9 @@
 
 	function redirectPage(lId) {
 //		if (location.search != null){
+		location.href = 'randomRecipe' + location.search + '&expertise='+lId;
 
-		location.href = 'qsrecipe.html' + location.search + '&expertise='+lId;
+//		location.href = 'qsrecipe.html' + location.search + '&expertise='+lId;
 //		location.href = 'qtime.html' + '?mood='+mId;
 //		}else{		alert('Error, starting over');
 //		location.href = 'q.html';}
