@@ -72,8 +72,9 @@ var levLen=levels[pairs['expertise']].length;
 var timeLen=times[pairs['time']].length;
 var lev=levels[pairs['expertise']].toString().substr(0,1).toUpperCase()+levels[pairs['expertise']].toString().substr(1,levLen);
 //$("#titleU").html("<center><p style=\"color:orange;font-size=180%;!important;\">"+levels[pairs['expertise']].toString()+"Level"+lev.toString()+"</p></center><br>").css({fontSize:"180%"});
-$("#titleU").append("<center><p style=\"color:orange;font-size=180%;!important;\">"+" For the: "+moods[pairs['mood']].toString()+" Level: "+lev.toString()+"</p></center>").css({fontSize:"180%"});
-$("#titleU").append("<center><p style=\"color:orange;font-size=180%;!important;\">"+"You have: "+times[pairs['time']].toString()+"</p></center><br>").css({fontSize:"100%"});
+$("#titleU").append("<h2>"+" For the: "+moods[pairs['mood']].toString()+" Level: "+lev.toString()+"</h2>");
+$("#titleU").append("<h2>"+"You have: "+times[pairs['time']].toString()+"</h2>");
+//$("#titleU").append("<center><p style=\"color:orange;font-size=180%;!important;\">"+"You have: "+times[pairs['time']].toString()+"</p></center><br>").css({fontSize:"100%"});
 
 
 });
@@ -95,7 +96,7 @@ $("#titleU").append("<center><p style=\"color:orange;font-size=180%;!important;\
 <body style="background: url({backgroundImage}) center center no-repeat">
 
         <div class="recipeInfo" id="titleU"></div>
-		<h2>WOULD YOU LIKE TO COOK THIS?</h2>
+		<!--h2>WOULD YOU LIKE TO COOK THIS?</h2-->
 	<div>
 
 
