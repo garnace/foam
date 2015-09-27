@@ -89,8 +89,8 @@ $("#titleU").append("<center><p style=\"color:orange;font-size=180%;!important;\
 </head>
 <body style="background: url({backgroundImage}) center center no-repeat">
 
-        <div id="titleU"></div>
-
+        <div class="recipeInfo" id="titleU"></div>
+		<h2>WOULD YOU LIKE TO COOK THIS?</h2>
 	<div>
 
 
