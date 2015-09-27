@@ -76,6 +76,8 @@ var ranG = Math.floor(Math.random()*backG.length);
 
 
 levels=['unspecified','expert','intermediate','beginner'];
+times=['unspecified','One+ hours','2+ hours','5+ minutes'];
+moods=['unspecified','Adventurous','Lazy','Stressed'];
 var pair = new Array();
 var lenq =  queryat.length;
 var pairs={};
@@ -115,12 +117,15 @@ pair=['level','expert0'];
 }
 
 //alert("ready"+query+pair[0].toString()+levels[2].toString());
-alert("ready"+query+pair[0].toString());
+//alert("ready"+query+pair[0].toString());
 
 //document.getElementById("titleU").innerHTML="<center><p style=\"color:red;font-size=180%;!important;\">"+levels[pairs['expertise']].toString()+"Level</p></center>";
 var levLen=levels[pairs['expertise']].length;
+var timeLen=times[pairs['time']].length;
 var lev=levels[pairs['expertise']].toString().substr(0,1).toUpperCase()+levels[pairs['expertise']].toString().substr(1,levLen);
-$("#titleU").html("<center><p style=\"color:orange;font-size=180%;!important;\">"+levels[pairs['expertise']].toString()+"Level"+lev.toString()+"</p></center>").css({fontSize:"180%"});
+//$("#titleU").html("<center><p style=\"color:orange;font-size=180%;!important;\">"+levels[pairs['expertise']].toString()+"Level"+lev.toString()+"</p></center><br>").css({fontSize:"180%"});
+$("#titleU").append("<center><p style=\"color:orange;font-size=180%;!important;\">"+" For the: "+moods[pairs['mood']].toString()+" Level: "+lev.toString()+"</p></center>").css({fontSize:"180%"});
+$("#titleU").append("<center><p style=\"color:orange;font-size=180%;!important;\">"+"You have: "+times[pairs['time']].toString()+"</p></center><br>").css({fontSize:"100%"});
 
 
 });
@@ -153,10 +158,10 @@ function getM()
 <!--div class="ui-bar ui-bar-b"  style="background:#8B795E;font-family: 'Droid Serif', serif; !important;"-->
 <!--h3>div bar</h3-->
 <!--a href="#" data-role="button">button</a-->
-<center><p style="font-size:180%;!important;">Describe your expertise level...</p></center>
-<center><p style="font-size:180%;!important;">Describe your expertise level...</p></center>
+<!--center><p style="font-size:180%;!important;">Describe your expertise level...</p></center-->
+<!--center><p style="font-size:180%;!important;">Describe your expertise level...</p></center-->
         <div id="titleU"></div>
-	<p>Hello<p>
+
 	<div>
 				 <center><p id="urltxt"></p><p id="paraid" style="font-family:courier;font-size:180%;!important;">Your recipe:<img src="icx/recipe_page_mockup.png" width="120"/>  Choose to...</p></center>
 	</div>
@@ -178,7 +183,7 @@ function getM()
 <li id="b3">
     <a href="#" onclick="getM();">
      <div class="imgAlign">	
-      <img src="icx/expert.gif"  />
+      <img src="images/btn_yes_off.png"  />
      </div>
       <center><h2>Cook this</h2></center>
       <center><p>I say yes.</p></center>
@@ -188,19 +193,10 @@ function getM()
 <li id="b3">
     <a href="#" onclick="getM();">
      <div class="imgAlign">	
-      <img src="icx/interme.gif"  />
+      <img src="images/cutcaster-photo-100322602-Hell-No-Red-Button.jpg"  />
      </div>
       <center><h2>Don't cook this</h2></center>
       <center><p>Show me something else.</p></center>
-    </a><a href="#">button</a>
-</li>
-<li id="b3">
-    <a href="#" onclick="redirectPage(3);">
-     <div class="imgAlign">	
-      <img src="icx/beginner.gif"  />
-     </div>
-      <center><h2>Beginner</h2></center>
-      <center><p>This is all new to me.</p></center>
     </a><a href="#">button</a>
 </li>
 
@@ -209,10 +205,10 @@ function getM()
 
 
 </ul></center>
-<br>
-<br>
-<p>helloo world<a href="#second" data-transition="mine">go second</a></p>
-<p>helloo world<a href="#third" id="m">go third</a></p>
+
+
+
+
 </div>
 
 

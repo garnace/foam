@@ -66,6 +66,67 @@
 
 
 
+//var $=jQuery.noConflict();
+$(document).ready(function(){
+	var blis= "b1news b2headline";
+	var lis= "xc1news cb2headline";
+	var bray = blis.split(' ');
+	var bay = lis.split(' ');
+	var lb = new Array(bray,bay);
+	var lbcount = 0;
+	var uline = $('#b1 a');
+	var lcount = 0;
+	
+	var t = 0;//uline;
+	var th = 0;
+//	("#b1 a").click(function(){alert('jquery');});
+//	$("#a1").click(function(){
+	$("#b1 a").click(function(){
+	th=$(this);
+	lbcount = (lbcount+1)%2;
+//	alert (th.timer);
+		if (t) clearInterval(t);
+//		if (uline.timer) alert('time'+uline.timer);
+		if (uline.timer) {//alert('time'+uline.timer);
+			clearInterval(uline.timer);
+		}
+//		if (th.timer) alert('time');
+//		if ($(this).timer) alert('time');
+//clearInterval(th.timer);
+
+//	$(this).timer=$(this).setInterval(function(){
+//	$(this).timer=setInterval(function(){
+	th.timer=setInterval(function(){
+//		alert("hi"+th.timer);
+//		alert("hi"+th.timer);
+		lcount = (lcount +1) % bay.length ;
+		th.parent().slideUp(function(){
+
+
+	//		uline.html(bay[lcount]);
+			uline.html(lb[lbcount][lcount]);
+			uline.parent().slideDown();});
+			uline.timer=th.timer
+	},2200);
+		
+
+		//alert('jquery');
+
+	});
+	$("#m").click(function(){alert('jquery');if (t) clearInterval(t);});
+	t=setInterval(function(){
+//		alert("hi");
+		lcount = (lcount +1) % bray.length ;
+		uline.fadeOut(function(){
+
+
+		uline.html(bray[lcount]);
+		uline.fadeIn();});
+
+	},2200);
+
+
+});
 
 function getM()
 {
@@ -104,12 +165,12 @@ function getM()
 
 <div data-role="content">
 <center><ul data-role="listview" data-inset="true" data-split-icon="gear" style="width:80%" class="odd-thumb">
+<li id="b1"><a href="#" id="a1">one</a><a href="#">button</a></li>
+<li id="b2"><a href="#">two</a><a href="#">button</a></li>
+<li id="b3"><a href="#" onclick="getM();">I Feel...<center><p>I Feel...&nbsp;&nbsp;&nbsp;<img src="icx/adven-icon.png" width="140" style="margin-right:auto;"/></p></center></a><a href="#">button</a></li>
 
 
-
-
-
-
+<li id="b3"><a href="#" onclick="getM();"><center><p>I Feel...&nbsp;&nbsp;&nbsp;<img src="icx/adven-icon.png" width="140" style="margin-right:auto;"/></p></center></a><a href="#">button</a></li>
 <li id="b3">
     <a href="#" onclick="redirectPage(1);">
      <div class="imgAlign">	
@@ -161,24 +222,38 @@ function getM()
 
 
 </ul></center>
+<br>
+<br>
+<p>helloo world<a href="#second" data-transition="mine">go second</a></p>
+<p>helloo world<a href="#third" id="m">go third</a></p>
+<div id="hero" class="hero-unit">
+<div id="imdiv">
+	<!--div class="quickflip-wrapper"-->
+	<!--div ><a href="#" class="quickFlipCta"><img src="images/Yoursky.gif" /></a></div-->
+	<!--div ><a href="#" class="quickFlipCta"> <img src="images/ss036.gif" /></a>  </div-->
+	<!--/div-->
+<!--img src="i/img/dish/dish1.jpg" width="50" height="50"/-->
+
+</br>
+<div id="images" >
+</div><!--imdiv images-->
+
+</div><!--imdiv-->
+
+
+
+<div id="imdivp" >
+
+
+<div id="imagesp">
+</div><!--imdiv imagesp-->
+
+</div><!--imdiv-->
+<br/>
+<a id="fb3" class="btn btn-large btn-success" style="padding:15px 10px 8px 10px; padding-top:20;" onclick="getAniMM(2);">Animate</a>
+
+</div><!--hero-->
 </div>
-
-<div data-role="footer" style="background-image:url('icx/2_Rate_Mood_bg.png');">
-
-	<div id="title">
-		<center><img src = "icx/moodyfoodie-logo.png"></center>
-
-	</div>
-
-
-
-
-
-
-</div>
-
-
-
 
 </div><!--page-->
 
