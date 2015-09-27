@@ -2,7 +2,12 @@
 <html>
 <head>	
   <title>{recipe.name}</title>
+
   <link rel="stylesheet" type="text/css" href="/css/randomRecipe.css">
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/quiz.js"></script>
+<script type="text/javascript" src="scripts/jquery.tools.min.js"></script>
+
 <script>
 
 $(document).ready(function(){
