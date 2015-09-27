@@ -36,6 +36,8 @@ Project: Star Advisor
       line-height: 30px;
 
 }
+  
+
 
 body
 {
@@ -2351,6 +2353,59 @@ a.tooltipp:hover span span:after
 }
 
 
+.odd-thumb li a
+{
+	padding-left:80px;!important;
+}
+
+.imgAlign
+{
+	position:absolute;
+	left:0;top:0;bottom:0;
+//	width:80px;
+	width:120px;
+//	height:40px;	
+}
+.imgAlign img
+{
+	position:absolute;
+	margin:auto;
+	left:0;top:0;bottom:0;right:0;
+	
+	max-width:140px;
+//	height:50px;
+	max-height:80px;
+}
+
+.ui-listview > li .imgAlign p, .imgAlign p
+{
+	position:absolute;
+	font-size:200%;!important;
+	margin:auto;!important;
+	left:0;top:0;bottom:0;right:0;
+	max-width:140px;
+//	height:50px;
+	max-height:80px;
+}
+
+
+.imgAligni
+{
+	position:absolute;
+	top:0;bottom:0;
+//	width:80px;
+	width:120px;
+//	height:40px;	
+}
+.imgAligni img
+{
+	position:absolute;
+	margin:auto;
+	top:0;bottom:0;right:0;
+	max-width:140px;
+//	height:50px;
+	max-height:80px;
+}
 
 
 a.tooltip
