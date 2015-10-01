@@ -439,6 +439,6 @@ app.get('/api/favorites', function(request, response) {
 
 
 http.createServer(app).listen(app.get('port'), function() {
-	console.log('Express server listening on port '+process.env.VCAP_SERVICES + app.get('port'));
+	console.log('Express server listening on port '+app.get('env')+process.env.VCAP_SERVICES + app.get('port'));
 });
 
