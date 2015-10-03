@@ -111,7 +111,11 @@ function serveFirstPage(req, res) {
 }
 
 function serveRandomRecipe(req, res) {
-	var mood = req.query.mood;
+	var moods=['unspecified','adventurous','lazy','stressed'];
+//	var mood = req.query.mood;
+	var mood = moods[parseInt(req.query.mood)].toString();
+
+//	var mood = req.query.mood;
 	var time = req.query.time;
 	var expertise = req.query.expertise;
 
