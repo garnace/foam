@@ -3,8 +3,11 @@
 var recipesObject = require('../model/recipes.json');
 var utils = require('../model/utils');
 
+
 exports.getRecipes = function(req, res) {
-	var mood = req.query.mood;
+	var moods=['unspecified','adventurous','lazy','stressed'];
+//	var mood = req.query.mood;
+	var mood = moods[parseInt(req.query.mood)];
 	var time = req.query.time;
 	var expertise = req.query.expertise;
 

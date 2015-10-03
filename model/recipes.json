@@ -31,7 +31,7 @@
 		},
 		{
 			"name": "Buffalo Chicken Wrap", 
-			"moods": ["lazy"],
+			"moods": ["adventurous"],
 			"time": 2, 
 			"expertise": 1,
 			"ingredients": ["1 tbsp vegetable oil", "1 tbsp butter", " 1 lbs skinless, boneless chicken breasts, cut into bite-size pieces", "1/4 cup hot sauce", "4 flour tortillas", "2 cups shredded lettuce", "1 celery stalk, diced", "1/2 cup blue cheese dressing"],
@@ -40,7 +40,7 @@
 		},
 		{
 			"name": "Chicken Stir Fry", 
-			"moods": ["lazy"],
+			"moods": ["stressed"],
 			"time": 2, 
 			"expertise": 1,
 			"ingredients": ["4 boneless skinless chicken breast halves", "3 tbsp cornstarch", "2 tbsp soy sauce", "1/2 tsp ground giner", "1/4 garlic powder", "3 tbsp cooking oil, divided", "2 cups broccoli florets", "1 cup sliced celery", "1 cup thinly sliced carrot", "1 small onion cut into wedges", "1 cup water1 tsp chicken bouillon granule"],
