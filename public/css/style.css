@@ -1628,6 +1628,8 @@ p label
 
 #tableDBF td
 {
+	overflow-x:hidden;
+	overflow-y:visible;
 	vertical-align:middle;
 }
 
