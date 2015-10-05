@@ -163,15 +163,17 @@ function getM()
 </ul></center>
 </div>
 <center><h3 style="color:#008800;font-family: 'Droid Serif', serif; !important;">Popular Recomendations</h3></center>
-<center><table id="tableDBF" cellpadding="2" cellspacing="2" style="text-align: center;  color:rgb(5,5,5);" border="1" cellpadding="2" cellspacing="2">
+<center>
+<!--table id="tableDBF" cellpadding="2" cellspacing="2" style="text-align: center;  color:rgb(5,5,5);" border="1" cellpadding="2" cellspacing="2"-->
+<table id="tableDBF" style="text-align: center;  color:rgb(5,5,5);" data-role="table" data-mode="columntoggle" class="ui-responsive">
 
   <thead>
     <tr>
-      <th>Mood</th>
-      <th>Main Ingred&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-      <th>Time</th>
-      <th>Skill Level&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-      <th>Curious?</th>
+      <th data-priority="1">Mood</th>
+      <th data-priority="5">Main Ingred&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+      <th data-priority="3">Time</th>
+      <th data-priority="4">Skill Level&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+      <th  data-priority="2">Curious?</th>
     </tr>
   </thead>
 
@@ -182,20 +184,20 @@ function getM()
     <tr>
       <!-- FIRST, LAST fields -->
 
-      <td align="center" padding="2">Mood&nbsp;      <img src="icx/lazy-icon.png" width="80" />
+      <td align="center" padding="2">Mood&nbsp;      <img src="icx/lazy-icon.png" width="60" />
       </td>
 
       <td >Main Ingred&nbsp;RSS
       </td>
       <!--End  FIRST, LAST fields -->
-      <td align="center" padding="2">Time&nbsp;      <img src="images/1hr.gif" width="80" />
+      <td align="center" padding="2">Time&nbsp;      <img src="images/1hr.gif" width="60" />
 
       </td>
 
-      <td >Level&nbsp;      <img src="icx/expert.gif" width="80" />
+      <td >Level&nbsp;      <img src="icx/expert.gif" width="60" />
 
       </td>
-      <td ><button id="dbR1" class="butdelc">Take a Look</button>
+      <td ><button id="dbRF1" class="butdelc">Yes</button>
       </td>
 
 
@@ -218,7 +220,7 @@ function getM()
       </td>
       <td >&nbsp;
       </td>
-      <td ><button id="dbR2" class="butdelc">Delete</button>&nbsp;
+      <td ><button id="dbRF1" class="butdelc">YES</button>&nbsp;
       </td>
 
 
@@ -238,7 +240,7 @@ function getM()
       </td>
       <td >&nbsp;
       </td>
-      <td ><button id="dbR3" class="butdelc">Delete</button>&nbsp;
+      <td ><button id="dbRF1" class="butdelc">Delete</button>&nbsp;
       </td>
 
 

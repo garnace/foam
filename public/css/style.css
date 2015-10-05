@@ -1613,10 +1613,11 @@ p label
 
 #tableDBF {
 //    width:392px;
+    width:80%;
 	font-family:'Droid Serif', serif;!important;
 //    height:392px;
  //   font-size:12px;
-    font-size:20px;
+    font-size:18px;
     border:0 0 40px 0;
     margin:0 0 80px 0;
 	background-color:#005555;
@@ -1624,6 +1625,12 @@ p label
 	text-shadow:none;
     opacity:1;
 }
+
+#tableDBF td
+{
+	vertical-align:middle;
+}
+
 .ui-page-theme-a .ui-panel-wrapper #tableDBF
 {
 	text-shadow:none;
@@ -1847,7 +1854,22 @@ p label
   //position:absolute;
 }
 
+#dbRF1
+{
 
+	border-radius:7px;
+	font-family:'Droid Serif', serif;!important;
+//    height:392px;
+ //   font-size:12px;
+    font-size:18px;
+	line-height:1.0em;
+	width:80px;
+	text-align:center;
+	vertical-align:middle;
+	padding:6px 12px;
+//	font-weight:normal;
+	height:32px;
+}
 #searchDi #tbutton button{
 //    padding-left:10px;
  //j  padding-top:30px;
