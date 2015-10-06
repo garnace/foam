@@ -53,4 +53,16 @@ exports.getRandomRecipe = function(mood, time, expertise) {
 	return possibleOptions[utils.getRandomInt(0, possibleOptions.length - 1)];
 
 };
+/*
+exports.getIngredients = function()
+{
 
+	var listIngredients=[];
+
+	for(var i;i< recipesObject.length;i++)	
+	{
+		
+	}
+	return listIngredients;
+};
+*/
