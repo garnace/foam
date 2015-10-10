@@ -4110,6 +4110,7 @@ Uses php helper file
 */
 function readFood(dbId)
 {
+   alert (""+hostUrl);
 //	$.getJSON("http://"+hostUrl+"/StarAdvisor/readph.php?fName="+dbId+"&callback=?",function(data){
 	$.getJSON("http://"+hostUrl+"/api/v1/recipes?callback=?",function(data){
    alert ("hi recx");
