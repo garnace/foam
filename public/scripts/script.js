@@ -4118,8 +4118,9 @@ function readFood(dbId)
 //	$.getJSON("http://"+hostUrl+"/StarAdvisor/readph.php?fName="+dbId+"&callback=?",function(data){
 	$.getJSON("http://"+hostUrl+"/api/v1/recipes?"+ranInput+"&callback=?",function(data){
    alert ("hi recx");
-		$.each(data.recipes,function(i,item){
-		   alert ("hi"+item[0]+"");	
+//		$.each(data.recipes,function(i,item){
+		$.each(data,function(i,item){
+		   alert ("hi"+item.recipe+"");	
 		tableFillF(i,item);
 
 	});//each json
@@ -4316,14 +4317,14 @@ function tableFillF(i,item)
 
 	if (pending == 1)
 	{	//alert ("pendLine:"+$tabP);
-	$("<tr><td>"+item[0]+" </td><td> "+item[1]+"</td> <td>"+item[2]+"</td><td>"+item[3]+"</td><td><button class=\"butdelc\">Delete</button></td> </tr>").appendTo("#tableDBF tbody");
+	$("<tr><td>"+item.ingredients[0]+" </td><td> "+item[4]+"</td> <td>"+item[2]+"</td><td>"+item[3]+"</td><td><button class=\"butdelc\">Delete</button></td> </tr>").appendTo("#tableDBF tbody");
 	}else if (pending==2)
 	{	
 	alert("itemii:"+item.phone);
 		//alert("itemii:"+item.getPhone());
 		//alert ("item"+item.last);
-	$("#tableDBF tbody tr:eq("+i+") td:eq(0)").html(item[0]);
-	$("#tableDBF tbody tr:eq("+i+") td:eq(1)").html(item[1]);
+	$("#tableDBF tbody tr:eq("+i+") td:eq(0)").html(item[1]);
+	$("#tableDBF tbody tr:eq("+i+") td:eq(1)").html(item[4]);
 	$("#tableDBF tbody tr:eq("+i+") td:eq(2)").html(item[2]);
 	$("#tableDBF tbody tr:eq("+i+") td:eq(3)").html(item[3]);
 			
