@@ -4099,6 +4099,38 @@ if (window.File && window.FileReader && window.Blob)
 }
 //-- End readfjtDBB()
 
+/**********readFood*****
+The readFood reads saved files such as co.txt: reading database info using php
+in the event of the database being down.
+Uses php helper file
+
+--readph.php
+
+
+*/
+function readFood(dbId)
+{
+//	$.getJSON("http://"+hostUrl+"/StarAdvisor/readph.php?fName="+dbId+"&callback=?",function(data){
+	$.getJSON("http://"+hostUrl+"/api/v1/recipes?callback=?",function(data){
+   alert ("hi recx");
+		$.each(data.recipes,function(i,item){
+		   alert ("hi"+item[0]+"");	
+		tableFillF(i,item);
+
+	});//each json
+
+
+	});	//json
+}
+//-- End readFood()
+
+
+/**************tableFillT*************************
+*
+*Function to read table 
+*add to reservations available div
+*
+**/
 
 function tableFillT(i,item)
 {
@@ -4122,6 +4154,12 @@ function tableFillT(i,item)
 		}
 }
 
+/**************tableFill*************************
+*
+*Function to read json and 
+*rewrite/add to html table
+*items : first,last,phone,mobile
+**/
 function tableFill(i,item)
 {
 
@@ -4205,6 +4243,99 @@ function tableFill(i,item)
 
 
 }
+
+
+/**************tableFillF*************************
+*
+*Function to read json and 
+*rewrite/add to html table
+*items : mood,ingredients,time,skill
+*for food recipes
+**/
+function tableFillF(i,item)
+{
+
+
+
+	var pending=1;
+
+
+
+
+
+	tabP=$("#tableDBF tbody tr:eq("+i+") td:eq(0)");
+	//if (tabP.text().length > 1)
+    if (tabP.text().length > 0)
+    {alert (tabP.text());
+
+	//map as alternative to if td contains item conditional
+	$("#tableDBF tbody tr:eq("+i+") td:eq(0):contains('"+item[0]+"')").map(function()
+	{//--alert (item.first + $(this).text());
+		tab1=$("#tableDBF tbody tr:eq("+i+") td:eq(1)");
+		tab2=$("#tableDBF tbody tr:eq("+i+") td:eq(2)");
+		tab3=$("#tableDBF tbody tr:eq("+i+") td:eq(3)");
+
+		//match all cells
+
+		if (($("#tableDBF tbody tr:eq("+i+") td:eq(1):contains("+item[1]+")").text().length >0) && ($("#tableDBF tbody tr:eq("+i+") td:eq(2):contains("+item[2]+")").text().length > 0 ) && ($("#tableDBF tbody tr:eq("+i+") td:eq(3):contains("+item[3]+")").text().length > 0))
+		{
+
+			pending=0;
+		}else//match all
+		{
+
+
+		alert ("nomatch"+$("#tableDBF tbody tr:eq("+i+") td:eq(1)").text()+$("#tableDBF tbody tr:eq("+i+") td:eq(2)").text()+$("#tableDBF tbody tr:eq("+i+") td:eq(3)").text()+":"+item[1]+item[2]+item[3]);
+
+
+
+
+		pending=2;
+
+		}// endif else match all
+
+
+	});//map first item
+
+	if ( pending ==1)  //since table cell exists
+	{
+		//--alert(""+i+"");
+		pending=2;		//dont append
+	}
+//	$pending=0;
+
+
+	}  //tabP length
+
+	//check pending flag
+
+	if (pending == 1)
+	{	//alert ("pendLine:"+$tabP);
+	$("<tr><td>"+item[0]+" </td><td> "+item[1]+"</td> <td>"+item[2]+"</td><td>"+item[3]+"</td><td><button class=\"butdelc\">Delete</button></td> </tr>").appendTo("#tableDBF tbody");
+	}else if (pending==2)
+	{	
+	alert("itemii:"+item.phone);
+		//alert("itemii:"+item.getPhone());
+		//alert ("item"+item.last);
+	$("#tableDBF tbody tr:eq("+i+") td:eq(0)").html(item[0]);
+	$("#tableDBF tbody tr:eq("+i+") td:eq(1)").html(item[1]);
+	$("#tableDBF tbody tr:eq("+i+") td:eq(2)").html(item[2]);
+	$("#tableDBF tbody tr:eq("+i+") td:eq(3)").html(item[3]);
+			
+	}//pending==2
+
+
+
+
+
+
+
+
+
+
+
+}
+
 
 
 //--readfDBB
