@@ -4118,11 +4118,11 @@ function readFood(dbId)
 //	$.getJSON("http://"+hostUrl+"/StarAdvisor/readph.php?fName="+dbId+"&callback=?",function(data){
 //	$.getJSON("http://"+hostUrl+"/api/v1/recipes?"+ranInput+"&callback=?",function(data){
 	$.ajax({url:"http://"+hostUrl+"/api/v1/recipes?"+ranInput, dataType:'json'}).done(function(data){
-   alert ("hi recx");
+   alert ("scanning db");
 //		$.each(data.recipes,function(i,item){
 		$.each(data,function(i,item){
 
-		   alert ("hi"+JSON.stringify(item)+"");	
+		   alert (item.ingredients[0]+"hi"+JSON.stringify(item)+"");	
 //		tableFillF(i,item);
 
 	});//each json
