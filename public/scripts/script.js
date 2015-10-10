@@ -4120,7 +4120,8 @@ function readFood(dbId)
    alert ("hi recx");
 //		$.each(data.recipes,function(i,item){
 		$.each(data,function(i,item){
-		   alert ("hi"+item.ingredients[1]+"");	
+//		   alert ("hi"+item.ingredients[1]+"");	
+		   alert ("hi"+JSON.stringify(item)+"");	
 //		tableFillF(i,item);
 
 	});//each json
