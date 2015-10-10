@@ -4116,17 +4116,20 @@ function readFood(dbId)
 //	var ranInput="mood=2&time=2&expertise=1";
 //   alert (""+hostUrl);
 //	$.getJSON("http://"+hostUrl+"/StarAdvisor/readph.php?fName="+dbId+"&callback=?",function(data){
-	$.getJSON("http://"+hostUrl+"/api/v1/recipes?"+ranInput+"&callback=?",function(data){
+//	$.getJSON("http://"+hostUrl+"/api/v1/recipes?"+ranInput+"&callback=?",function(data){
+	$.ajax({url:"http://"+hostUrl+"/api/v1/recipes?"+ranInput, dataType:'json'}).done(function(data){
    alert ("hi recx");
 //		$.each(data.recipes,function(i,item){
 		$.each(data,function(i,item){
-//		   alert ("hi"+item.ingredients[1]+"");	
+
 		   alert ("hi"+JSON.stringify(item)+"");	
 //		tableFillF(i,item);
 
 	});//each json
 
 
+	}).fail(function(data){
+	alert("fail");
 	});	//json
 }
 //-- End readFood()
