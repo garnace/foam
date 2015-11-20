@@ -89,7 +89,7 @@ app.use(function(req,res,next){
 app.get('/api/v1/recipes', recipesModel.getRecipes);
 app.get('/api/v1/recipesAll', recipesModel.getAllRecipes);
 app.get('/', serveFirstPage);
-
+app.get('/randomRecipe', serveRandomRecipe);
 /*app.get('/listdb',function(req,res){
 
 	db.driver.admin.listDatabases(function(e,dbs){
@@ -379,6 +379,37 @@ function serveFirstPage(req, res) {
 //	res.render('landingPage',{backgroundImage:backgroundPath},{stage:"textstage"});
 	res.render('landingPage',{backgroundImage:backgroundPath,stage:"text text text"});
 }
+
+function serveRandomRecipe(req, res) {
+	var moods=['unspecified','adventurous','lazy','stressed'];
+//	var mood = req.query.mood;
+	var mood = moods[parseInt(req.query.mood)].toString();
+
+//	var mood = req.query.mood;
+	var time = req.query.time;
+	var expertise = req.query.expertise;
+
+	if (!mood) {
+		return res.status(400).send('Query Param Mood must be defined');
+	}
+
+	if (!time) {
+		return res.status(400).send('Query Param Time must be defined');
+	}
+
+	if (!expertise) {
+		return res.status(400).send('Query Param Expertise must be defined');
+	}
+
+	var timeInt = parseInt(time);
+	var expertiseInt = parseInt(expertise);
+	var recipe = recipesModel.getRandomRecipe(mood, timeInt, expertiseInt);
+	console.log(JSON.stringify(recipe, null, 2));
+	var backgroundPath = '/images/backgrounds/recipe_page05background.png';
+
+	res.render('randomRecipe', {recipe: recipe, backgroundImage: backgroundPath});
+}
+
 
 http.createServer(app).listen(app.get('port'), function() {
 		console.log('Express server listening on port '+ app.get('port'));
