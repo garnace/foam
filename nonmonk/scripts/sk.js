@@ -255,6 +255,61 @@ $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?
 
 }
 
+
+
+
+//--------------GETREC----
+
+function getRec
+
+
+var pRay=new Array();
+pRay=pR;
+
+
+//alert("flickr setPic");
+$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?",
+//$.getJSON("/api/v1/recipes?mood=\"happy\"&time=1&expertise=1&jsoncallback=?",
+  {
+    tags: pId+",nasa",
+//    tagmode: "any",
+    tagmode: "all",
+    l:"4",
+    format: "json"
+ },
+  function(data) {
+//      $("#images").html("");
+//	alert("hello"+pId);
+      $.each(data.items, function(i,item){
+
+      pRay.push(item);
+
+//      $("<img/>").attr("src", pRay[i].media.m).attr("title",pRay[i].title).appendTo("#images");
+      if ( i == 8 ) 
+
+      {
+/*	   $("#images> img").each(function()
+	   {
+		    var iE=$(this);
+		    iE.wrap("<a href=\" "+iE.attr("src")+"\"> </a>");
+	    });
+*/
+
+//	boardDoubler(pRay);
+	boardDoublerCF(pRay);
+	  return false;
+     }
+    });//$.each
+  });//json
+
+}
+
+
+
+
+
+//------------Getrecr
+
 function setPicB(pId,pR,randY)
 {
 
@@ -2224,89 +2279,6 @@ function getSitesM(sId)
 //	getCach(htReal[2]);
 	getCachM(htReal);
 }
-
-function getAniMM(sId)
-{
-	var ln;
-	var divv;
-	var lastp;
-        var qwray= new Array();
-	var turnbp=1;
-	var turntp=1;
-	var turnlp=1;
-	var turn=5;
-	var leftS=null;
-	var topS=null;
-	var l=0,t=0;
-
-//	var turnn=1;
-//	ln=$("div[id*=qw]").length();
-	ln=$("div[class*=qw]").length;
-
-//	alert("length qw:"+ln);
-	divv =$("div[class*=qw]");
-        $(divv).map(function(i,v){qwray.push([i,$($(divv)[i]).css("left")]);});
-//	alert("last qw:"+qwray);
-//	alert("last qw:"+$(qwray[6])[0]+"::"+qwray[6][1]);
-//	alert("last qw:"+$($(divv)[0]).attr("class")+$($(divv)[0]).css("top"));
-	ln=ln-1;
-	lastp=$($(divv)[0]).css("top");
-//	alert("lasddt qw:"+$($(divv)[ln]).attr("class")+$($(divv)[0]).css("top")+$($(divv)[5]).css("top")+"left"+$($(divv)[0]).css("left"));
-//	$($(divv)[ln]).animate({bottom: '-=140'},200);
-//	$($(divv)[ln]).animate({top: '10',left:'10'},200);
-	for (i=0;i<ln+1;i++)
-	{
-		
-		turntp = (turntp+1) % turn;
-		turntp = Math.floor(Math.random()* (turn-1))+2;
-		if (turntp < 3 || turnlp >3)
-		{
-			l = (-100)* turnlp*2; 
-			t = (-100)* turntp*2; 
-			leftS = l.toString(); 
-			topS = t.toString(); 
-
-
-
-		}
-		else if (turnlp < 3 && turntp > 4)
-		{
-			l = (100)* turnlp*2; 
-			t = (100)* turntp*2; 
-			leftS = l.toString(); 
-			topS = t.toString(); 
-
-
-
-		}
-
-		else{
-			l = (-100)* turnlp*2; 
-			t = (100)* turntp*2; 
-			leftS = l.toString(); 
-			topS = t.toString(); 
-
-		}
-		$($(divv)[i]).animate({top:topS,left:leftS},1200);
-
-		turnlp = (turnlp) %turn;
-		turnlp = Math.floor(Math.random()* (turn-1))+2;
-	}
-	for (i=0;i<ln+1;i++)
-		$($(divv)[i]).animate({top:'0',left:'0'},1200);
-
-
-
-
-
-
-
-
-}
-
-
-
-
 function getAniM(sId)
 {
 
@@ -4099,127 +4071,6 @@ if (window.File && window.FileReader && window.Blob)
 }
 //-- End readfjtDBB()
 
-/**********readFood*****
-The readFood reads saved files such as co.txt: reading database info using php
-in the event of the database being down.
-Uses php helper file
-
---readph.php
-
-
-*/
-function readFood(dbId)
-{
-	var m=2,t=2,e=1;
-
-	var ranInput="mood="+m+"&time="+t+"&expertise="+e;
-//	var ranInput="mood=2&time=2&expertise=1";
-   alert (""+hostUrl);
-//	$.getJSON("http://"+hostUrl+"/StarAdvisor/readph.php?fName="+dbId+"&callback=?",function(data){
-//	$.getJSON("http://"+hostUrl+"/api/v1/recipes?"+ranInput+"&callback=?",function(data){
-	$.ajax({url:"http://"+hostUrl+"/api/v1/recipes?"+ranInput, dataType:'json'}).done(function(data){
-   alert ("scanning db"+data.length+"items");
-//		$.each(data.recipes,function(i,item){
-		$.each(data,function(i,item){
-
-		   alert (item.ingredients[0]+"hi"+JSON.stringify(item)+"");	
-//		tableFillF(i,item);
-
-	});//each json
-
-
-	}).fail(function(data){
-	alert("fail");
-	});	//json
-}
-//-- End readFood()
-
-/*********dropRecipes****
-Function to drop recipes database.
-
-**********************/
-function dropRecipes (dR)
-{
-
-	$.ajax({url:"http://"+hostUrl+"/drop",dataType:'json'}).done(function(data){
-		
-
-	});
-
-}
-
-
-/**********readFoodtoDB*****
-The readFoodtoDB reads json files to mongo monk db 
-
-
-
---readph.php
-
-
-*/
-function readFoodtoDB(dbId)
-{
-	var m=2,t=2,e=1;
-
-	var ranInput="mood="+m+"&time="+t+"&expertise="+e;
-
-//   alert (""+hostUrl);
-
-	if (dbId == 0)
-	{
-		ranInput='';
-    	}
-
-//	$.ajax({url:"http://"+hostUrl+"/api/v1/recipes?"+ranInput, dataType:'json',contentType:'application/json',type:'GET'}).done(function(data){
-	$.ajax({url:"http://"+hostUrl+"/api/v1/recipesAll?"+ranInput, dataType:'json',contentType:'application/json',type:'GET'}).done(function(data){
-   alert ("scanning / filling db");
-//		$.each(data.recipes,function(i,item){
-		var dCount=0;
-		dCount = data.length;
-		$.each(data,function(i,item){
-//		var tem =encodeURI(item);
-//		var em = tem.replace(/%5B/g,'[').replace(/%5D/g,']');
-		var iT = item;
-/*
-		$.each(iT,function(k,v){
-
-			alert(k+"innder"+v);
-			return v;
-		});
-*/
-//			k.replace(/%5B/g,'[').replace(/%5D/g,']');			
-//		var im = tem.toArray();
-//		var im = eval(em);
-//		alert('it--'+item.ingredients[0]+"result--"+iT.ingredients[0]);
-		$.ajax({url:"http://"+hostUrl+"/mfavourites",data:iT,dataType:'json',traditional:true,type:'POST'}).done(function(data){
-/*			if (dCount == data.length -1)
-			{
-				alert('mongo created: '+data);
-			}
-*/
-		});
-
-
-
-	});//each json
-
-
-	}).fail(function(data){
-	alert("fail");
-	});	//json
-}
-//-- End readFood()
-
-
-
-
-/**************tableFillT*************************
-*
-*Function to read table 
-*add to reservations available div
-*
-**/
 
 function tableFillT(i,item)
 {
@@ -4243,12 +4094,6 @@ function tableFillT(i,item)
 		}
 }
 
-/**************tableFill*************************
-*
-*Function to read json and 
-*rewrite/add to html table
-*items : first,last,phone,mobile
-**/
 function tableFill(i,item)
 {
 
@@ -4332,99 +4177,6 @@ function tableFill(i,item)
 
 
 }
-
-
-/**************tableFillF*************************
-*
-*Function to read json and 
-*rewrite/add to html table
-*items : mood,ingredients,time,skill
-*for food recipes
-**/
-function tableFillF(i,item)
-{
-
-
-
-	var pending=1;
-
-
-
-
-
-	tabP=$("#tableDBF tbody tr:eq("+i+") td:eq(0)");
-	//if (tabP.text().length > 1)
-    if (tabP.text().length > 0)
-    {alert (tabP.text());
-
-	//map as alternative to if td contains item conditional
-	$("#tableDBF tbody tr:eq("+i+") td:eq(0):contains('"+item[0]+"')").map(function()
-	{//--alert (item.first + $(this).text());
-		tab1=$("#tableDBF tbody tr:eq("+i+") td:eq(1)");
-		tab2=$("#tableDBF tbody tr:eq("+i+") td:eq(2)");
-		tab3=$("#tableDBF tbody tr:eq("+i+") td:eq(3)");
-
-		//match all cells
-
-		if (($("#tableDBF tbody tr:eq("+i+") td:eq(1):contains("+item[1]+")").text().length >0) && ($("#tableDBF tbody tr:eq("+i+") td:eq(2):contains("+item[2]+")").text().length > 0 ) && ($("#tableDBF tbody tr:eq("+i+") td:eq(3):contains("+item[3]+")").text().length > 0))
-		{
-
-			pending=0;
-		}else//match all
-		{
-
-
-		alert ("nomatch"+$("#tableDBF tbody tr:eq("+i+") td:eq(1)").text()+$("#tableDBF tbody tr:eq("+i+") td:eq(2)").text()+$("#tableDBF tbody tr:eq("+i+") td:eq(3)").text()+":"+item[1]+item[2]+item[3]);
-
-
-
-
-		pending=2;
-
-		}// endif else match all
-
-
-	});//map first item
-
-	if ( pending ==1)  //since table cell exists
-	{
-		//--alert(""+i+"");
-		pending=2;		//dont append
-	}
-//	$pending=0;
-
-
-	}  //tabP length
-
-	//check pending flag
-
-	if (pending == 1)
-	{	//alert ("pendLine:"+$tabP);
-	$("<tr><td>"+item.ingredients[0]+" </td><td> "+item[4]+"</td> <td>"+item[2]+"</td><td>"+item[3]+"</td><td><button class=\"butdelc\">Delete</button></td> </tr>").appendTo("#tableDBF tbody");
-	}else if (pending==2)
-	{	
-	alert("itemii:"+item.phone);
-		//alert("itemii:"+item.getPhone());
-		//alert ("item"+item.last);
-	$("#tableDBF tbody tr:eq("+i+") td:eq(0)").html(item[1]);
-	$("#tableDBF tbody tr:eq("+i+") td:eq(1)").html(item[4]);
-	$("#tableDBF tbody tr:eq("+i+") td:eq(2)").html(item[2]);
-	$("#tableDBF tbody tr:eq("+i+") td:eq(3)").html(item[3]);
-			
-	}//pending==2
-
-
-
-
-
-
-
-
-
-
-
-}
-
 
 
 //--readfDBB
@@ -4989,8 +4741,8 @@ function load()
     {
 
 //alert("what");
-    setRPic(0);
-//    setRPik(0);
+//    setRPic(0);
+    setRPik(0);
     document.getElementById("hero").style.display="";
     document.getElementById("dbTable").style.display="";
 

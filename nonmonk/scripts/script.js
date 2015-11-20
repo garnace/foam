@@ -4114,11 +4114,11 @@ function readFood(dbId)
 
 	var ranInput="mood="+m+"&time="+t+"&expertise="+e;
 //	var ranInput="mood=2&time=2&expertise=1";
-   alert (""+hostUrl);
+//   alert (""+hostUrl);
 //	$.getJSON("http://"+hostUrl+"/StarAdvisor/readph.php?fName="+dbId+"&callback=?",function(data){
 //	$.getJSON("http://"+hostUrl+"/api/v1/recipes?"+ranInput+"&callback=?",function(data){
 	$.ajax({url:"http://"+hostUrl+"/api/v1/recipes?"+ranInput, dataType:'json'}).done(function(data){
-   alert ("scanning db"+data.length+"items");
+   alert ("scanning db");
 //		$.each(data.recipes,function(i,item){
 		$.each(data,function(i,item){
 
@@ -4133,85 +4133,6 @@ function readFood(dbId)
 	});	//json
 }
 //-- End readFood()
-
-/*********dropRecipes****
-Function to drop recipes database.
-
-**********************/
-function dropRecipes (dR)
-{
-
-	$.ajax({url:"http://"+hostUrl+"/drop",dataType:'json'}).done(function(data){
-		
-
-	});
-
-}
-
-
-/**********readFoodtoDB*****
-The readFoodtoDB reads json files to mongo monk db 
-
-
-
---readph.php
-
-
-*/
-function readFoodtoDB(dbId)
-{
-	var m=2,t=2,e=1;
-
-	var ranInput="mood="+m+"&time="+t+"&expertise="+e;
-
-//   alert (""+hostUrl);
-
-	if (dbId == 0)
-	{
-		ranInput='';
-    	}
-
-//	$.ajax({url:"http://"+hostUrl+"/api/v1/recipes?"+ranInput, dataType:'json',contentType:'application/json',type:'GET'}).done(function(data){
-	$.ajax({url:"http://"+hostUrl+"/api/v1/recipesAll?"+ranInput, dataType:'json',contentType:'application/json',type:'GET'}).done(function(data){
-   alert ("scanning / filling db");
-//		$.each(data.recipes,function(i,item){
-		var dCount=0;
-		dCount = data.length;
-		$.each(data,function(i,item){
-//		var tem =encodeURI(item);
-//		var em = tem.replace(/%5B/g,'[').replace(/%5D/g,']');
-		var iT = item;
-/*
-		$.each(iT,function(k,v){
-
-			alert(k+"innder"+v);
-			return v;
-		});
-*/
-//			k.replace(/%5B/g,'[').replace(/%5D/g,']');			
-//		var im = tem.toArray();
-//		var im = eval(em);
-//		alert('it--'+item.ingredients[0]+"result--"+iT.ingredients[0]);
-		$.ajax({url:"http://"+hostUrl+"/mfavourites",data:iT,dataType:'json',traditional:true,type:'POST'}).done(function(data){
-/*			if (dCount == data.length -1)
-			{
-				alert('mongo created: '+data);
-			}
-*/
-		});
-
-
-
-	});//each json
-
-
-	}).fail(function(data){
-	alert("fail");
-	});	//json
-}
-//-- End readFood()
-
-
 
 
 /**************tableFillT*************************
