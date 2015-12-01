@@ -378,7 +378,7 @@ function uploadFile(req,res){
 	});//fs rename file
 
 	});//parse form
-});
+}
 
 function serveFirstPage(req, res) {
 	var randomInt=utils.getRandomInt(0,2);
