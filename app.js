@@ -363,7 +363,7 @@ app.get('/favPar',function(req,res){
 
 function uploadFile(req,res){
 	var form = new formidable.IncomingForm();
-	form.parse(request, function(error,fields,files){
+	form.parse(req, function(error,fields,files){
 //var tmpName = 
 //	fileName=req.files.image.name;
 
