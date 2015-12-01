@@ -9,6 +9,7 @@ var user= require('./routes/user');
 var monk = require('monk');
 var MongoClient = require('mongodb').MongoClient;
 var assert  = require('assert');
+var formidable = require('formidable');
 var db;
  db = monk('localhost:27017/test');
 var http=require('http');
@@ -89,6 +90,7 @@ app.use(function(req,res,next){
 app.get('/api/v1/recipes', recipesModel.getRecipes);
 app.get('/api/v1/recipesAll', recipesModel.getAllRecipes);
 app.get('/', serveFirstPage);
+app.get('/upload',uploadFile);
 app.get('/randomRecipe', serveRandomRecipe);
 /*app.get('/listdb',function(req,res){
 
@@ -359,6 +361,24 @@ app.get('/favPar',function(req,res){
 );
 
 
+function uploadFile(req,res){
+	var form = new formidable.IncomingForm();
+	form.parse(request, function(error,fields,files){
+//var tmpName = 
+//	fileName=req.files.image.name;
+
+	fileName=files.image.name;
+	var newPath = _dirname+ "/uploads"+fileName;
+
+	fs.rename(files.upload.path,'./tmp.jpg',function (err){
+		if (err)
+			res.send("error uploading"+files.upload.path);
+		else
+			res.send('wrote to file path'+files.upload.path);
+	});//fs rename file
+
+	});//parse form
+});
 
 function serveFirstPage(req, res) {
 	var randomInt=utils.getRandomInt(0,2);
