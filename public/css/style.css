@@ -1626,6 +1626,9 @@ p label
     opacity:1;
 }
 
+#hqht {
+	text-shadow:none;
+}
 #tableDBF td
 {
 	overflow-x:hidden;
