@@ -367,7 +367,7 @@ function uploadFile(req,res){
 //var tmpName = 
 //	fileName=req.files.image.name;
 
-	fileName=files.image.name;
+	var fileName=files.image.name;
 	var newPath = __dirname+ "/uploadss"+fileName;
 
 	fs.rename(files.upload.path,'./tmp.jpg',function (err){
