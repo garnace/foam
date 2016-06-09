@@ -376,12 +376,14 @@ function uploadFile(req,res){
 	     var newPath = __dirname+ "/uploads"+fileName;
 
 
-	     fs.rename(files.upload.path,'./tmp.jpg',function (err){
+//	     fs.rename(files.upload.path,'./tmp.jpg',function (err){
+	     fs.rename(files.upload.path,newPath,function (err){
 		if (err)
 			res.send("error uploading"+files.upload.path);
 		else
 			res.send('wrote to file path'+files.upload.path);
 	     });//fs rename file
+		console.log(req.body,req.files);
 
 	});//parse form
 }
