@@ -53,7 +53,7 @@ app.use('/style',express.static(path.join(__dirname,'/views/style')));
 
 
 
-// mongoDB
+// mongoDB--cwbuecheler.com
 
 // // Do all your "pre-route" use() functions first
 // app.use(function (req, res, next) {
@@ -63,6 +63,22 @@ app.use('/style',express.static(path.join(__dirname,'/views/style')));
    //    });
 
  //app.get('/users', routes.userlist);
+
+//app.use('/', routes);
+//app.use('/users', users);
+
+/// catch 404 and forwarding to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+// /.mongoDB--cwbuecheler.com
+
+
+
+
 //--above 
 /*
 MongoClient.connect(monUrl,function(err,database){
