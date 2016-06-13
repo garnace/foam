@@ -53,7 +53,7 @@ app.use('/style',express.static(path.join(__dirname,'/views/style')));
 
 
 
-// mongoDB--cwbuecheler.com
+// ----mongoDB--cwbuecheler.com*********
 
 // // Do all your "pre-route" use() functions first
 // app.use(function (req, res, next) {
@@ -74,7 +74,7 @@ app.use(function(req, res, next) {
     next(err);
 });
 
-// /.mongoDB--cwbuecheler.com
+// ----/.mongoDB--cwbuecheler.com *********
 
 
 
@@ -106,7 +106,8 @@ app.use(function(req,res,next){
 app.get('/api/v1/recipes', recipesModel.getRecipes);
 app.get('/api/v1/recipesAll', recipesModel.getAllRecipes);
 app.get('/', serveFirstPage);
-app.post('/upload',uploadFile);
+//app.post('/upload',uploadFile);
+app.post('/upload',upFile);
 app.get('/randomRecipe', serveRandomRecipe);
 /*app.get('/listdb',function(req,res){
 
@@ -376,6 +377,39 @@ app.get('/favPar',function(req,res){
 }
 );
 
+
+/*****
+https://tonyspiro.com/uploading-and-resizing-an-image-using-node-js/
+
+*****/
+function upFile(req,res){
+
+	fs.readFile(req.files.image.path,function(err,data){
+
+		var fileName = req.fifles.image.name;
+
+		if (!fileName)
+		{
+			console.log("file request error");
+			res.redirect("/");
+			res.end();
+		}else
+		{
+			var newPath= __dirname+ "/uploads/" + fileName;
+			
+			fs.writeFile(newPath,data,function(err)  {
+
+				//display image
+				res.redirect("/uploads/" + fileName);
+
+			});
+		}
+
+
+	});
+	
+
+}
 
 function uploadFile(req,res){
 	
