@@ -107,8 +107,8 @@ app.use(function(req,res,next){
 app.get('/api/v1/recipes', recipesModel.getRecipes);
 app.get('/api/v1/recipesAll', recipesModel.getAllRecipes);
 app.get('/', serveFirstPage);
-//app.post('/upload',uploadFile);
-app.post('/upload',upFile);
+app.post('/upload',uploadFile);
+//app.post('/upload',upFile);
 app.get('/randomRecipe', serveRandomRecipe);
 /*app.get('/listdb',function(req,res){
 
