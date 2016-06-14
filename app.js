@@ -387,7 +387,7 @@ function upFile(req,res){
 
 	fs.readFile(req.files.image.path,function(err,data){
 
-		var fileName = req.fifles.image.name;
+		var fileName = req.files.image.name;
 
 		if (!fileName)
 		{
