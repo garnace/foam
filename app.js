@@ -412,11 +412,13 @@ function upFile(req,res){
 
 }
 
-function uploadFile(req,res){
-	
+function upFOld(req,res)
+{
+
 	var form = new formidable.IncomingForm();
 
 	req.socket.setTimeout(10*60*1000);
+
 
 	form.parse(req, function(error,fields,files){
 //var tmpName = 
@@ -437,6 +439,43 @@ function uploadFile(req,res){
 		console.log(req.body,req.files);
 
 	});//parse form
+
+}
+
+
+function uploadFile(req,res){
+	
+	var form = new formidable.IncomingForm();
+
+	req.socket.setTimeout(10*60*1000);
+
+//----
+	fs.readFile(req.files.image.path,function(err,data){
+
+		var fileName = req.files.image.name;
+
+		if (!fileName)
+		{
+			console.log("file request error");
+			res.redirect("/");
+			res.end();
+		}else
+		{
+			var newPath= __dirname+ "/uploads/" + fileName;
+			
+			fs.writeFile(newPath,data,function(err)  {
+
+				//display image
+				res.redirect("/uploads/" + fileName);
+
+			});
+		}
+
+
+	});
+
+
+//---
 }
 
 function serveFirstPage(req, res) {
