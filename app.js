@@ -463,16 +463,21 @@ function uploadFile(req,res){
 			res.end();
 		}		
 		else
+			res.send('wrote to file path');
+
+
+/*		else
 		{
 
 			var newPath= __dirname + "/uploads/" + imageName;
 			
-			//fs.rename(,newPath,function(){});
+
 			fs.writeFile(newPath,data,function(err){
 
 				res.redirect("/uploads/"+ imageName);
 			});
 		}
+*/
 	      });
 
 	});
