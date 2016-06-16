@@ -44,8 +44,10 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended:true}));
 //app.use(bodyParser.urlencoded({extended:false}));
 
+//--------------bodyParser (body-parser for formidable or express.bodyParser)
 app.use(bodyParser.json());
 //app.use(express.bodyParser());
+
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname,'public')));
 app.use('/style',express.static(path.join(__dirname,'/views/style')));
@@ -449,7 +451,39 @@ function uploadFile(req,res){
 
 	req.socket.setTimeout(10*60*1000);
 
+	form.parse(req,function(err,fields,files){
+		var imageName = files.image.name;
+
+	      fs.readFile(req.files.image.path,function(err,data){
+
+		if (!imageName)
+		{
+			console.log("file request error");
+			res.redirect("/");
+			res.end();
+		}		
+		else
+		{
+
+			var newPath= __dirname + "/uploads/" + imageName;
+			
+			//fs.rename(,newPath,function(){});
+			fs.writeFile(newPath,data,function(err){
+
+				res.redirect("/uploads/"+ imageName);
+			});
+		}
+	      });
+
+	});
 //----
+
+
+//---
+}
+
+function upStub (){
+
 	fs.readFile(req.files.image.path,function(err,data){
 
 		var fileName = req.files.image.name;
@@ -475,7 +509,6 @@ function uploadFile(req,res){
 	});
 
 
-//---
 }
 
 function serveFirstPage(req, res) {
