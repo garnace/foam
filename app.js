@@ -452,7 +452,7 @@ function uploadFile(req,res){
 
 //	req.socket.setTimeout(10*60*1000);
 
-	form.parse(req,function(err,fields,files){
+//	form.parse(req,function(err,fields,files){
 		var imageName = files.image.name;
 
 	      fs.readFile(req.files.image.path,function(err,data){
@@ -481,7 +481,7 @@ function uploadFile(req,res){
 */
 	      });
 
-	});
+//	});
 //----
 
 
