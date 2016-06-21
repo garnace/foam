@@ -454,7 +454,7 @@ function uploadFile(req,res){
 
 //	form.parse(req,function(err,fields,files){
 //		var imageName = files.image.name;
-		var imageName = req.files.image.name;
+		var imageName = req.files.images.name;
 
 	      fs.readFile(req.files.image.path,function(err,data){
 
