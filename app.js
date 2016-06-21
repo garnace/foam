@@ -51,8 +51,8 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname,'public')));
 app.use('/style',express.static(path.join(__dirname,'/views/style')));
-
-
+//app.use(connect.multipart());
+app.use(multipart());
 
 
 // ----mongoDB--cwbuecheler.com*********
