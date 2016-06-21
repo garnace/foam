@@ -449,7 +449,7 @@ function upFOld(req,res)
 function uploadFile(req,res){
 	
 //	var form = new formidable.IncomingForm();
-	var form = new multipart.Form();
+	var form = new multipartMiddleware.Form();
 
 //	req.socket.setTimeout(10*60*1000);
 
