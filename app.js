@@ -52,7 +52,7 @@ app.use(methodOverride());
 app.use(express.static(path.join(__dirname,'public')));
 app.use('/style',express.static(path.join(__dirname,'/views/style')));
 //app.use(connect.multipart());
-app.use(multipart());
+//app.use(multipart());
 
 
 // ----mongoDB--cwbuecheler.com*********
@@ -109,7 +109,8 @@ app.use(function(req,res,next){
 app.get('/api/v1/recipes', recipesModel.getRecipes);
 app.get('/api/v1/recipesAll', recipesModel.getAllRecipes);
 app.get('/', serveFirstPage);
-app.post('/upload',multiPartMiddleware,uploadFile);
+//app.post('/upload',multiPartMiddleware,uploadFile);
+app.post('/upload',uploadFile);
 //app.post('/upload',upStub);
 //app.post('/upload',upFile);
 app.get('/randomRecipe', serveRandomRecipe);
@@ -449,7 +450,7 @@ function upFOld(req,res)
 function uploadFile(req,res){
 	
 //	var form = new formidable.IncomingForm();
-	var form = new multipartMiddleware.Form();
+//	var form = new multipartMiddleware.Form();
 
 //	req.socket.setTimeout(10*60*1000);
 
