@@ -109,7 +109,7 @@ app.use(function(req,res,next){
 app.get('/api/v1/recipes', recipesModel.getRecipes);
 app.get('/api/v1/recipesAll', recipesModel.getAllRecipes);
 app.get('/', serveFirstPage);
-app.post('/upload',uploadFile);
+app.post('/upload',multiPartMiddleware,uploadFile);
 //app.post('/upload',upStub);
 //app.post('/upload',upFile);
 app.get('/randomRecipe', serveRandomRecipe);
@@ -455,15 +455,16 @@ function uploadFile(req,res){
 
 //	form.parse(req,function(err,fields,files){
 //		var imageName = files.image.name;
-//		var imageName = req.files.images.name;
-		var imageName=null;
+		var imageName = req.files.images.name;
+//		var imageName=null;
 
-		form.on("part",function(part){
+//formllllt		form.on("part",function(part){
 
-		imageName=part.filename;
+//		imageName=part.filename;
+//		imageName=part.filename;
 
-//	      fs.readFile(req.files.image.path,function(err,data){
-	      fs.readFile(part.filename,function(err,data){
+	      fs.readFile(req.files.image.path,function(err,data){
+//	      fs.readFile(part.filename,function(err,data){
 
 		if (!imageName)
 		{
@@ -487,7 +488,8 @@ function uploadFile(req,res){
 			});
 		}
 */
-		});//multi
+
+//formult		});
 
 	      });
 
