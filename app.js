@@ -455,11 +455,13 @@ function uploadFile(req,res){
 
 //	req.socket.setTimeout(10*60*1000);
 
-	form.parse(req,function(err,fields,files){
+//	form.parse(req,function(err,fields,files){
+	form.parse(req).on('file',function(name,file){
 //		var imageName = files.image.name;
 //		var imageNameb = req.files.image.name;
 		
-		var imageName = files.upload.path;
+//		var imageName = files.upload.path;
+		var imageName = name;
 //		var imageName = req.body.image.name;
 //		var imageName=null;
 
@@ -475,16 +477,16 @@ function uploadFile(req,res){
 		if (!imageName)
 		{
 			console.log("file request error");
-			console.log(fields);
-			console.log(files);
+			console.log(name);
+			console.log(file);
 			res.redirect("/");
 			res.end();
 		}		
 		else
 		{
 			res.send('wrote to file path');
-			console.log(fields);
-			console.log(files);
+//			console.log(fields);
+			console.log(file);
 		}
 
 /*		else
