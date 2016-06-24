@@ -468,7 +468,7 @@ function uploadFile(req,res){
 //		imageName=part.filename;
 //		imageName=part.filename;
 
-	      fs.readFile(files.upload.path,function(err,data){
+//	      fs.readFile(files.upload.path,function(err,data){
 //	      fs.readFile(req.body.image.path,function(err,data){
 //	      fs.readFile(part.filename,function(err,data){
 
@@ -502,7 +502,7 @@ function uploadFile(req,res){
 
 //formult		});
 
-	      });
+//	      });
 
 	});
 //----
