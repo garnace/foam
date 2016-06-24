@@ -466,9 +466,9 @@ function uploadFile(req,res){
 //		imageName=part.filename;
 //		imageName=part.filename;
 
-//	      fs.readFile(req.files.image.path,function(err,data){
+	      fs.readFile(req.files.image.path,function(err,data){
 //	      fs.readFile(req.body.image.path,function(err,data){
-	      fs.readFile(part.filename,function(err,data){
+//	      fs.readFile(part.filename,function(err,data){
 
 		if (!imageName)
 		{
