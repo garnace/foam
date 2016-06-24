@@ -457,8 +457,10 @@ function uploadFile(req,res){
 
 	form.parse(req,function(err,fields,files){
 //		var imageName = files.image.name;
-		var imageNameb = req.files.image.name;
-		var imageName = req.body.image.name;
+//		var imageNameb = req.files.image.name;
+		
+		var imageName = files.upload.path;
+//		var imageName = req.body.image.name;
 //		var imageName=null;
 
 //formllllt		form.on("part",function(part){
@@ -466,19 +468,24 @@ function uploadFile(req,res){
 //		imageName=part.filename;
 //		imageName=part.filename;
 
-	      fs.readFile(req.files.image.path,function(err,data){
+	      fs.readFile(files.upload.path,function(err,data){
 //	      fs.readFile(req.body.image.path,function(err,data){
 //	      fs.readFile(part.filename,function(err,data){
 
 		if (!imageName)
 		{
 			console.log("file request error");
+			console.log(fields);
+			console.log(files);
 			res.redirect("/");
 			res.end();
 		}		
 		else
+		{
 			res.send('wrote to file path');
-
+			console.log(fields);
+			console.log(files);
+		}
 
 /*		else
 		{
