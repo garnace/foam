@@ -110,7 +110,7 @@ app.use(function(req,res,next){
 app.get('/api/v1/recipes', recipesModel.getRecipes);
 app.get('/api/v1/recipesAll', recipesModel.getAllRecipes);
 app.get('/', serveFirstPage);
-app.post('/upload',uploadFile);
+app.post('/upload',multipartMiddleware,uploadFile);
 //app.post('/upload',uploadFile);
 //app.post('/upload',upStub);
 //app.post('/upload',upFile);
@@ -457,7 +457,8 @@ function uploadFile(req,res){
 
 //	form.parse(req,function(err,fields,files){
 //		var imageName = files.image.name;
-		var imageName = req.files.images.name;
+//		var imageName = req.files.images.name;
+		var imageName = req.body.images.name;
 //		var imageName=null;
 
 //formllllt		form.on("part",function(part){
@@ -465,7 +466,8 @@ function uploadFile(req,res){
 //		imageName=part.filename;
 //		imageName=part.filename;
 
-	      fs.readFile(req.files.image.path,function(err,data){
+//	      fs.readFile(req.files.image.path,function(err,data){
+	      fs.readFile(req.body.image.path,function(err,data){
 //	      fs.readFile(part.filename,function(err,data){
 
 		if (!imageName)
