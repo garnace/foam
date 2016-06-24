@@ -450,14 +450,14 @@ function upFOld(req,res)
 
 function uploadFile(req,res){
 	
-//	var form = new formidable.IncomingForm();
-	var form = new multipartMiddleware.Form({maxFieldSize: 8192, maxFields: 10, autoFiles: false});
+	var form = new formidable.IncomingForm();
+//	var form = new multipartMiddleware.Form({maxFieldSize: 8192, maxFields: 10, autoFiles: false});
 
 //	req.socket.setTimeout(10*60*1000);
 
-//	form.parse(req,function(err,fields,files){
+	form.parse(req,function(err,fields,files){
 //		var imageName = files.image.name;
-//		var imageName = req.files.images.name;
+		var imageNameb = req.files.image.name;
 		var imageName = req.body.image.name;
 //		var imageName=null;
 
@@ -497,7 +497,7 @@ function uploadFile(req,res){
 
 	      });
 
-//	});
+	});
 //----
 
 
