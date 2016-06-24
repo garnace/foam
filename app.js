@@ -53,7 +53,7 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use('/style',express.static(path.join(__dirname,'/views/style')));
 //app.use(connect.multipart());
 //app.use(multipart());
-app.use(multipartMiddleware());
+//app.use(multipartMiddleware());
 
 
 // ----mongoDB--cwbuecheler.com*********
