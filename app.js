@@ -584,7 +584,7 @@ stackoverflow --File uploading with express 4.0
 		});
 
 
-			res.send('wrote to file path');
+			res.send('wrote to file path::'+filename);
 //			console.log(fields);
 			console.log(file);
 		}
