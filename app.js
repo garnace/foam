@@ -577,7 +577,8 @@ stackoverflow --File uploading with express 4.0
 		{
 
 
-		fstream= fs.createWriteStream(__dirname + '/files/' +filename);
+//		fstream= fs.createWriteStream(__dirname + '/files/' +filename);
+		fstream= fs.createWriteStream('/tmp/' +filename);
 		file.pipe(fstream);
 		fstream.on('close',function(){
 			res.redirect('/');
