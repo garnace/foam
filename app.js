@@ -10,6 +10,7 @@ var monk = require('monk');
 var MongoClient = require('mongodb').MongoClient;
 var assert  = require('assert');
 var formidable = require('formidable');
+var busboy = require("connect-busboy");
 var db;
  db = monk('localhost:27017/test');
 var http=require('http');
@@ -110,7 +111,8 @@ app.use(function(req,res,next){
 app.get('/api/v1/recipes', recipesModel.getRecipes);
 app.get('/api/v1/recipesAll', recipesModel.getAllRecipes);
 app.get('/', serveFirstPage);
-app.post('/upload',multipartMiddleware,uploadFile);
+//app.post('/upload',multipartMiddleware,uploadFile);
+app.post('/upload',uploadFilebus);
 //app.post('/upload',uploadFile);
 //app.post('/upload',upStub);
 //app.post('/upload',upFile);
@@ -515,6 +517,104 @@ function uploadFile(req,res){
 
 //---
 }
+
+
+function uploadFilebus(req,res){
+/*
+stackoverflow --File uploading with express 4.0
+--use busboy
+*/	
+
+
+//	var form = new formidable.IncomingForm();
+	
+//	var form = new multipartMiddleware.Form({maxFieldSize: 8192, maxFields: 10, autoFiles: false});
+
+//	req.socket.setTimeout(10*60*1000);
+
+//	form.parse(req,function(err,fields,files){
+//	form.parse(req).on('file',function(name,file){
+
+	var fstream;
+
+	req.pipe(req.busboy);
+
+//	form.uploadDir="/tmp";
+//	form.on('file',function(name,file){
+	req.busboy.on('file',function (fieldname,file,filename){
+
+//		var imageName = files.image.name;
+//		var imageNameb = req.files.image.name;
+		
+//		var imageName = files.upload.path;
+//		var imageName = name;
+		var imageName = filename;
+		var fstream;
+//		var imageName = req.body.image.name;
+//		var imageName=null;
+
+//formllllt		form.on("part",function(part){
+
+//		imageName=part.filename;
+//		imageName=part.filename;
+
+//	      fs.readFile(files.upload.path,function(err,data){
+//	      fs.readFile(req.body.image.path,function(err,data){
+//	      fs.readFile(part.filename,function(err,data){
+
+		if (!imageName)
+		{
+			console.log("file request error");
+			console.log(name);
+			console.log(file);
+
+
+			res.redirect("/");
+			res.end();
+		}		
+		else
+		{
+
+
+		fstream= fs.createWriteStream(__dirname + '/files/' +filename);
+		file.pipe(fstream);
+		fstream.on('close',function(){
+			res.redirect('/');
+		});
+
+
+			res.send('wrote to file path');
+//			console.log(fields);
+			console.log(file);
+		}
+
+
+/*		else
+		{
+
+			var newPath= __dirname + "/uploads/" + imageName;
+			
+
+			fs.writeFile(newPath,data,function(err){
+
+				res.redirect("/uploads/"+ imageName);
+			});
+		}
+*/
+
+//formult		});
+
+//	      });
+
+	});
+//----
+
+
+//---
+}
+
+
+
 
 function upStub (req,res){
 
