@@ -108,6 +108,7 @@ app.use(function(req,res,next){
 
 });
 //app.locals.db = db;
+app.use(busboy());
 app.get('/api/v1/recipes', recipesModel.getRecipes);
 app.get('/api/v1/recipesAll', recipesModel.getAllRecipes);
 app.get('/', serveFirstPage);
