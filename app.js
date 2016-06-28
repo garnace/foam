@@ -72,11 +72,26 @@ app.use('/style',express.static(path.join(__dirname,'/views/style')));
 //app.use('/users', users);
 
 /// catch 404 and forwarding to error handler
-/***app.use(function(req, res, next) {
+/***
+
+app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
+
+
+
+app.use(function(err,req,res){
+	res.status(err.status || 500);
+	res.render('error',{
+		message: err.message,
+		error:{};
+	})
+
+});
+
+
 ***/
 
 // ----/.mongoDB--cwbuecheler.com *********
@@ -109,6 +124,9 @@ app.use(function(req,res,next){
 });
 //app.locals.db = db;
 app.use(busboy());
+
+
+
 app.get('/api/v1/recipes', recipesModel.getRecipes);
 app.get('/api/v1/recipesAll', recipesModel.getAllRecipes);
 app.get('/', serveFirstPage);
@@ -701,6 +719,25 @@ function serveRandomRecipe(req, res) {
 
 	res.render('randomRecipe', {recipe: recipe, backgroundImage: backgroundPath});
 }
+
+
+
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+
+
+app.use(function(err,req,res){
+	res.status(err.status || 500);
+	res.render('error',{
+		message: err.message,
+		error:{};
+	})
+
+});
 
 
 http.createServer(app).listen(app.get('port'), function() {
