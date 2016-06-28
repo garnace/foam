@@ -721,8 +721,8 @@ function serveRandomRecipe(req, res) {
 }
 
 
-/*
-app.get("*",function(req, res, next) {
+
+app.get('*',function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
@@ -738,7 +738,7 @@ app.use(function(err,req,res,next){
 	})
 
 });
-*/
+
 
 http.createServer(app).listen(app.get('port'), function() {
 		console.log('Express server listening on port '+ app.get('port'));
